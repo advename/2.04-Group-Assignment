@@ -19,19 +19,26 @@
 
         /* Position our main container in the middle of the screen with
         a fixed width and height, relative to body-container */
+
         #body-container {
+            width:100%;
+            height: 100%;
             position: relative;
+            background: grey;
         }
-        #main-container{
-            position: absolute;
-            width:  1330px;
+
+        #main-container {
+            width: 1330px;
             height: 725px;
-            top:0;
-            bottom:0;
-            right:0;
-            left:0;
-            margin:0 auto;
-            background:black;
+            margin: auto;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: black;
+        }
+
+        /* Hide complete div or element */
+        .hide {
+            display: none;
         }
 
     </style>
@@ -44,46 +51,56 @@
 
 
             <!-- ############### Intro Scene ############### -->
-            <div id="intro">
+            <div id="intro" class="">
 
             </div>
 
 
             <!-- ################ Scene 1 ################## -->
-            <div id="sc-1">
+            <div id="sc-1" class="">
 
             </div>
 
 
             <!-- ################ Scene 2 ################## -->
-            <div id="sc-2">
+            <div id="sc-2" class="">
 
             </div>
 
 
             <!-- ################ Scene 3 ################## -->
-            <div id="sc-3">
+            <div id="sc-3" class="">
 
             </div>
 
 
             <!-- ################ Scene 4 ################## -->
-            <div id="sc-4">
+            <div id="sc-4" class="">
 
             </div>
 
 
             <!-- ################ Scene 5 ################## -->
-            <div id="sc-5">
+            <div id="sc-5" class="">
 
             </div>
 
 
             <!-- ################ Credits ################## -->
-            <div id="credits">
+            <div id="credits" class="">
 
             </div>
 
+
+
+
+
+
+            <audio class="audioName">
+                <source src="horse.ogg" type="audio/ogg">
+                <source src="horse.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
 
         </div>
     </div>
