@@ -9,12 +9,29 @@
     <style>
         /* Reset body's margin and padidng to 0 for full-width window +
         position relative if position absolute child's are used*/
+
         body {
             margin: 0;
             padding: 0;
             width: 100vw;
             height: 100vh;
+        }
+
+        /* Position our main container in the middle of the screen with
+        a fixed width and height, relative to body-container */
+        #body-container {
             position: relative;
+        }
+        #main-container{
+            position: absolute;
+            width:  1330px;
+            height: 725px;
+            top:0;
+            bottom:0;
+            right:0;
+            left:0;
+            margin:0 auto;
+            background:black;
         }
 
     </style>
@@ -22,7 +39,54 @@
 </head>
 
 <body>
+    <div id="body-container">
+        <div id="main-container">
 
+
+            <!-- ############### Intro Scene ############### -->
+            <div id="intro">
+
+            </div>
+
+
+            <!-- ################ Scene 1 ################## -->
+            <div id="sc-1">
+
+            </div>
+
+
+            <!-- ################ Scene 2 ################## -->
+            <div id="sc-2">
+
+            </div>
+
+
+            <!-- ################ Scene 3 ################## -->
+            <div id="sc-3">
+
+            </div>
+
+
+            <!-- ################ Scene 4 ################## -->
+            <div id="sc-4">
+
+            </div>
+
+
+            <!-- ################ Scene 5 ################## -->
+            <div id="sc-5">
+
+            </div>
+
+
+            <!-- ################ Credits ################## -->
+            <div id="credits">
+
+            </div>
+
+
+        </div>
+    </div>
 </body>
 
 <script>
