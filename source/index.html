@@ -21,7 +21,7 @@
         a fixed width and height, relative to body-container */
 
         #body-container {
-            width:100%;
+            width: 100%;
             height: 100%;
             position: relative;
             background: grey;
@@ -32,14 +32,48 @@
             height: 725px;
             margin: auto;
             position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
             background: black;
         }
 
         /* Hide complete div or element */
+
         .hide {
             display: none;
         }
+
+
+        /* #################### INTRO STYLE ###############################  */
+
+        #intro {
+            width: 100%;
+            height: 100%;
+            background-image: url(Sprite-Sheet-First-Scene.jpg);
+        }
+
+        .intro-animation-background {
+            background-position: -1330px;
+        }
+
+        .intro-click-to-start {
+            background: white;
+            width: 130px;
+            height: 120px;
+            position: absolute;
+            top: 380px;
+            left: 620px;
+            opacity: .2;
+        }
+
+        .intro-click-to-start:hover {
+            cursor: pointer;
+        }
+
+
+        /* #################### FIRST SCENE STYLE ##########################  */
 
     </style>
 
@@ -52,42 +86,58 @@
 
             <!-- ############### Intro Scene ############### -->
             <div id="intro" class="">
+                <div class="intro-click-to-start">
+                </div>
 
+
+
+                <audio autoplay loop class="neonA">
+                    <source src="neon.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <audio class="neon-flickerA">
+                    <source src="neon-flicker.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <audio autoplay class="rain-thunder-audioA">
+                    <source src="rain-thunder.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
 
 
             <!-- ################ Scene 1 ################## -->
-            <div id="sc-1" class="">
+            <div id="sc-1" class="hide">
 
             </div>
 
 
             <!-- ################ Scene 2 ################## -->
-            <div id="sc-2" class="">
+            <div id="sc-2" class="hide">
 
             </div>
 
 
             <!-- ################ Scene 3 ################## -->
-            <div id="sc-3" class="">
+            <div id="sc-3" class="hide">
 
             </div>
 
 
             <!-- ################ Scene 4 ################## -->
-            <div id="sc-4" class="">
+            <div id="sc-4" class="hide">
 
             </div>
 
 
             <!-- ################ Scene 5 ################## -->
-            <div id="sc-5" class="">
+            <div id="sc-5" class="hide">
 
             </div>
 
 
             <!-- ################ Credits ################## -->
-            <div id="credits" class="">
+            <div id="credits" class="hide">
 
             </div>
 
@@ -96,18 +146,116 @@
 
 
 
-            <audio class="audioName">
-                <source src="horse.ogg" type="audio/ogg">
-                <source src="horse.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
 
         </div>
     </div>
 </body>
 
 <script>
+    // ===========================  INTRO SCENE =======================================
+    // ================================================================================
+    //Initialize let and give values
+    let intro = document.querySelector("#intro");
+    let introClickToStart = document.querySelector(".intro-click-to-start");
+    let introActive = true;
 
+
+    //Audio of INTRO SCENE
+    let neonFlickerAudio = document.querySelector(".neon-flickerA")
+    neonFlickerAudio.volume = 1;
+    let neonAudio = document.querySelector(".neonA")
+    neonAudio.volume = 1;
+    let rainThunderAudio = document.querySelector(".rain-thunder-audioA")
+    rainThunderAudio.volume = 1;
+
+
+    // Change Intro Background randomly with flickering sound
+    setTimeout(introRandomBackground, Math.floor(Math.random() * (4000 - 2000 + 1) + 2000));
+
+    function introRandomBackground() {
+
+        // check if introActive is true, if so, continue, otherwhise, stop function
+        // by not calling it again
+        if (introActive === true) {
+            //adding class intro-anim... to change background and play flicker sound
+            intro.classList.add("intro-animation-background");
+            neonFlickerAudio.play();
+            //wait 100ms and then remove the class for normal background
+            setTimeout(function() {
+                intro.classList.remove("intro-animation-background");
+            }, 100);
+            console.log("intro-still-active")
+            //wait random between 500ms and 6000ms to change background again
+            let interval = Math.floor(Math.random() * (6000 - 500 + 1) + 500);
+            setTimeout(introRandomBackground, interval);
+        } else {
+            console.log("intro-deactivated")
+        }
+    }
+    introClickToStart.addEventListener('click', leaveIntroScene);
+
+    function leaveIntroScene() {
+        console.log("leave intro scene");
+
+        //fade out audio and stop flicker audio
+        fadeOutAudio(neonAudio);
+        fadeOutAudio(rainThunderAudio);
+        neonFlickerAudio.pause();
+
+        //fade out intro scene
+        fadeOut(intro);
+
+        //disable the introRandomBackground() function
+        introActive = false;
+    }
+
+
+    // ===========================  FIRST SCENE =======================================
+    // ================================================================================
+
+
+
+
+
+
+
+
+
+    // ================================================================================
+    // ================================================================================
+    // ===========================  OTHER STUFF =======================================
+    // ================================================================================
+
+    // Function to fade away elements
+    function fadeOut(element) {
+        var op = 1; // initial opacity
+        var timer = setInterval(function() {
+            // if completely faded away, stop timer and add .hide class to element
+            if (op <= 0.1) {
+                clearInterval(timer);
+                element.classList.add("hide");
+            }
+            // else, continue fading away
+            element.style.opacity = op;
+            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op -= op * 0.1;
+        }, 50);
+    }
+
+    // Function to fade away audio
+    function fadeOutAudio(audio) {
+        var vol = .2;
+        var timer = setInterval(function() {
+            // if completely faded away, stop timer and add .hide class to element
+            if (audio.volume <= vol) {
+                clearInterval(timer);
+                audio.pause();
+            } else {
+                // else, continue fading away
+                audio.volume = audio.volume - 0.1;
+            }
+        }, 50);
+    }
 
 </script>
 
