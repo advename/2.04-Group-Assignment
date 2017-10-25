@@ -47,11 +47,10 @@
 
 
         /* #################### INTRO STYLE ###############################  */
-
         #intro {
             width: 100%;
             height: 100%;
-            background-image: url(Sprite-Sheet-First-Scene.jpg);
+            background-image: url();
         }
 
         .intro-animation-background {
@@ -75,6 +74,32 @@
 
         /* #################### FIRST SCENE STYLE ##########################  */
 
+        #sc-1 {
+            width: 100%;
+            height: 100%;
+            background-image: url(Sprite-Sheet-First-Scene.jpg);
+        }
+
+        .sc-1-button-1 {
+            background-image: url(glowy-windows.png);
+            width: 89px;
+            height: 54px;
+            position: absolute;
+            top: 538.5px;
+            left: 797px;
+            opacity: .7;
+        }
+        .sc-1-button-1-glow {
+            -webkit-filter: drop-shadow(10px 10px 40px #f7f15b);
+            filter: drop-shadow(10px 10px 40px #f7f15b)
+        }
+
+        .sc-1-button-1:hover {
+            cursor: pointer;
+            -webkit-filter: drop-shadow(10px 10px 40px #f7f15b);
+            filter: drop-shadow(10px 10px 40px #f7f15b)
+        }
+
     </style>
 
 </head>
@@ -85,13 +110,13 @@
 
 
             <!-- ############### Intro Scene ############### -->
-            <div id="intro" class="">
+            <div id="intro" class="hide">
                 <div class="intro-click-to-start">
                 </div>
 
 
 
-                <audio autoplay loop class="neonA">
+                <audio loop class="neonA">
                     <source src="neon.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
@@ -99,7 +124,7 @@
                     <source src="neon-flicker.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
-                <audio autoplay class="rain-thunder-audioA">
+                <audio loop class="rain-thunder-audioA">
                     <source src="rain-thunder.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
@@ -107,7 +132,9 @@
 
 
             <!-- ################ Scene 1 ################## -->
-            <div id="sc-1" class="hide">
+            <div id="sc-1" class="">
+                <div class="sc-1-button-1">
+                </div>
 
             </div>
 
@@ -164,13 +191,15 @@
     let neonFlickerAudio = document.querySelector(".neon-flickerA")
     neonFlickerAudio.volume = 1;
     let neonAudio = document.querySelector(".neonA")
+    neonAudio.play();
     neonAudio.volume = 1;
     let rainThunderAudio = document.querySelector(".rain-thunder-audioA")
+    rainThunderAudio.play();
     rainThunderAudio.volume = 1;
 
 
     // Change Intro Background randomly with flickering sound
-    setTimeout(introRandomBackground, Math.floor(Math.random() * (4000 - 2000 + 1) + 2000));
+    //setTimeout(introRandomBackground, Math.floor(Math.random() * (4000 - 2000 + 1) + 2000));
 
     function introRandomBackground() {
 
@@ -212,6 +241,7 @@
 
     // ===========================  FIRST SCENE =======================================
     // ================================================================================
+    let sc1Button = document.querySelector(".sc-1-button-1");
 
 
 
