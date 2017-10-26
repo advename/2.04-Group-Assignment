@@ -65,12 +65,12 @@
 
         .intro-click-to-start {
             background: white;
-            width: 130px;
-            height: 120px;
+            width: 560px;
+            height: 430px;
             position: absolute;
-            top: 380px;
-            left: 620px;
-            opacity: .4;
+            top: 100px;
+            left: 220px;
+            opacity: 0;
         }
 
         /* Cursor changes to pointer on hovering over Start button */
@@ -213,10 +213,12 @@
             transform: scale(.47);
 
         }
-        .sc-2-continue{
-            height:100px;
-            width:100px;
-            background:white;
+
+        .sc-2-continue {
+            height: 100px;
+            width: 100px;
+            background: white;
+            opacity: .5;
         }
 
 
@@ -469,7 +471,7 @@
 
         //fade out audio and stop flicker audio
         fadeOutAudio(neonAudio);
-        fadeOutAudio(rainThunderAudio);
+        rainThunderAudio.volume = .10;
         neonFlickerAudio.pause();
 
         //fade out scene
@@ -490,7 +492,7 @@
     console.log("Second Scene")
 
 
-    scene2Continue.addEventListener('click',leaveSecondScene);
+    scene2Continue.addEventListener('click', leaveSecondScene);
 
     function leaveSecondScene() {
         console.log("leave first scene");
