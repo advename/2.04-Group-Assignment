@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title></title>
 
     <style>
@@ -47,15 +48,22 @@
 
 
         /* #################### INTRO STYLE ###############################  */
+
+        /* Intro scene initial setup */
+
         #intro {
             width: 100%;
             height: 100%;
             background-image: url();
         }
 
+        /* With the Javascript, changing Sprite sheet position randomly (no keyframe used here for random animation) */
+
         .intro-animation-background {
             background-position: -1330px;
         }
+
+        /* Intro Button to start */
 
         .intro-click-to-start {
             background: white;
@@ -67,6 +75,8 @@
             opacity: .2;
         }
 
+        /* Cursor changes to pointer on hovering over Start button */
+
         .intro-click-to-start:hover {
             cursor: pointer;
         }
@@ -74,14 +84,20 @@
 
         /* #################### FIRST SCENE STYLE ##########################  */
 
+        /* First scene initial setup */
+
         #sc-1 {
-            width: 100%;
-            height: 100%;
-            background-image: url(Sprite-Sheet-First-Scene.jpg);
+            width: 1330px;
+            height: 725px;
+            background-image: url(scene1/Sprite-Sheet-First-Scene.jpg);
+            overflow: hidden;
+            position: relative;
         }
 
-        .sc-1-button-1 {
-            background-image: url(glowy-windows.png);
+        /* First scene window setup */
+
+        .sc-1-window {
+            background-image: url(scene1/glowy-windows.png);
             width: 89px;
             height: 54px;
             position: absolute;
@@ -89,17 +105,76 @@
             left: 797px;
             opacity: .7;
         }
-        .sc-1-button-1-glow {
-            -webkit-filter: drop-shadow(10px 10px 40px #f7f15b);
-            filter: drop-shadow(10px 10px 40px #f7f15b)
+
+        /* With javascript, adding randomly and removing animation of glowing window */
+
+        .sc-1-window-glow {
+            animation: sc-1-windowGlow .4s;
         }
 
-        .sc-1-button-1:hover {
+        @keyframes sc-1-windowGlow {
+            50% {
+                -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+                filter: drop-shadow(5px 5px 20px #f7f15b);
+            }
+        }
+
+        /* Cursor changes to pointer on hovering over Window */
+        .sc-1-window:hover {
             cursor: pointer;
-            -webkit-filter: drop-shadow(10px 10px 40px #f7f15b);
-            filter: drop-shadow(10px 10px 40px #f7f15b)
+            -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+            filter: drop-shadow(5px 5px 20px #f7f15b);
         }
 
+        .sc-1-neon-sign {
+            background-image: url(scene1/neon-sign-glow.png);
+            width: 286px;
+            height: 257px;
+            position: absolute;
+            top: 229px;
+            left: 138px;
+            opacity: .7;
+        }
+
+        .sc-1-neon-sign-flickering {
+            animation: sc-1-flickering .5s;
+        }
+
+        @keyframes sc-1-flickering {
+            50% {
+                -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+                filter: drop-shadow(5px 5px 20px #f7f15b);
+            }
+        }
+
+        .sc-1-neon-sign:hover {
+            -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+            filter: drop-shadow(5px 5px 20px #f7f15b);
+        }
+
+
+
+
+
+
+
+        /* #################### OTHER STUFF ##########################  */
+
+        /* Rain animation - add to parent container overflow hidden and position relative in order to work */
+        .drop {
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(rgba(255, 255, 255, 0.6)));
+            background: -moz-linear-gradient(top, rgba(13, 52, 58, 1) 0%, rgba(255, 255, 255, .6) 100%);
+            width: 1px;
+            height: 89px;
+            position: absolute;
+            bottom: 200px;
+            animation: fall .63s linear infinite;
+        }
+        @keyframes fall {
+            to {
+                margin-top: 900px;
+            }
+        }
     </style>
 
 </head>
@@ -117,15 +192,15 @@
 
 
                 <audio loop class="neonA">
-                    <source src="neon.mp3" type="audio/mpeg">
+                    <source src="intro/neon.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
                 <audio class="neon-flickerA">
-                    <source src="neon-flicker.mp3" type="audio/mpeg">
+                    <source src="intro/neon-flicker.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
                 <audio loop class="rain-thunder-audioA">
-                    <source src="rain-thunder.mp3" type="audio/mpeg">
+                    <source src="intro/rain-thunder.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
@@ -133,8 +208,11 @@
 
             <!-- ################ Scene 1 ################## -->
             <div id="sc-1" class="">
-                <div class="sc-1-button-1">
+                <div class="sc-1-window">
                 </div>
+                <div class="sc-1-neon-sign">
+                </div>
+                <div class="rain"></div>
 
             </div>
 
@@ -197,9 +275,9 @@
     rainThunderAudio.play();
     rainThunderAudio.volume = 1;
 
-
+    /*
     // Change Intro Background randomly with flickering sound
-    //setTimeout(introRandomBackground, Math.floor(Math.random() * (4000 - 2000 + 1) + 2000));
+    //setTimeout(introRandomBackground, random(2000,4000));
 
     function introRandomBackground() {
 
@@ -215,12 +293,13 @@
             }, 100);
             console.log("intro-still-active")
             //wait random between 500ms and 6000ms to change background again
-            let interval = Math.floor(Math.random() * (6000 - 500 + 1) + 500);
+            let interval = random(500,6000);
             setTimeout(introRandomBackground, interval);
         } else {
             console.log("intro-deactivated")
         }
     }
+
     introClickToStart.addEventListener('click', leaveIntroScene);
 
     function leaveIntroScene() {
@@ -236,13 +315,91 @@
 
         //disable the introRandomBackground() function
         introActive = false;
+        sc1Active = true;
+    }
+
+    */
+    // ===========================  FIRST SCENE =======================================
+    // ================================================================================
+
+    //initialize let
+    let scene1 = document.querySelector("#sc-1");
+    let sc1Window = document.querySelector(".sc-1-window");
+    let sc1Active = true;
+    let sc1NeonSign = document.querySelector(".sc-1-neon-sign");
+
+
+
+    // Neon sign random flicker with sound
+    function sc1NeonSignRandomGlow() {
+
+         // check if scene Active is true, if so, continue, otherwhise, stop function by not calling it again
+        if (sc1Active === true) {
+            //adding class for animation
+            sc1NeonSign.classList.add("sc-1-neon-sign-flickering");
+            neonFlickerAudio.play();
+             //wait some time and then remove the class for normal state (animation disabled)
+            setTimeout(function() {
+                sc1NeonSign.classList.remove("sc-1-neon-sign-flickering");
+            }, 100);
+            console.log("sc1NeonSign-still-active")
+            //wait random to change run function again for animation
+            let interval = random(500,4000)
+            setTimeout(sc1NeonSignRandomGlow, interval);
+        } else {
+            console.log("sc1NeonSign-deactivated")
+        }
+    }
+    sc1NeonSignRandomGlow();
+
+    // Window with random flash/glowing
+    function sc1WindowRandomGlow() {
+
+        // check if scene Active is true, if so, continue, otherwhise, stop function by not calling it again
+        if (sc1Active === true) {
+            //adding class for animation
+            sc1Window.classList.add("sc-1-window-glow");
+
+            //wait some time and then remove the class for normal state (animation disabled)
+            setTimeout(function() {
+                sc1Window.classList.remove("sc-1-window-glow");
+            }, 401);
+            console.log("sc1-still-active")
+            //wait random to change run function again for animation
+            let interval = random(10,2000)
+            setTimeout(sc1WindowRandomGlow, interval);
+        } else {
+            console.log("sc1-deactivated")
+        }
+    }
+    sc1WindowRandomGlow();
+
+    //Adding click event listener to Window Area
+    sc1Window.addEventListener('click', leaveFirstScene);
+
+    // Do stuff after the click on Window
+    function leaveFirstScene() {
+        console.log("leave first scene");
+
+        //fade out audio and stop flicker audio
+        fadeOutAudio(neonAudio);
+        fadeOutAudio(rainThunderAudio);
+        neonFlickerAudio.pause();
+
+        //fade out scene
+        fadeOut(scene1);
+
+        //disable the sc1WindowRandomGlow() function
+        sc1Active = false;
+
     }
 
 
-    // ===========================  FIRST SCENE =======================================
+    // ===========================  SECOND SCENE =======================================
     // ================================================================================
-    let sc1Button = document.querySelector(".sc-1-button-1");
+    let scene2 = document.querySelector("#sc-2");
 
+    console.log("Second Scene")
 
 
 
@@ -285,6 +442,31 @@
                 audio.volume = audio.volume - 0.1;
             }
         }, 50);
+    }
+
+
+    // JavaScript to make it rain (in combination of jQuery)
+    var nbDrop = 858;
+    function randRange(minNum, maxNum) {
+        return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+    }
+    function createRain() {
+
+        for (i = 1; i < nbDrop; i++) {
+            var dropLeft = randRange(0, 1300);
+            var dropTop = randRange(-1000, 725);
+
+            $('.rain').append('<div class="drop" id="drop' + i + '"></div>');
+            $('#drop' + i).css('left', dropLeft);
+            $('#drop' + i).css('top', dropTop);
+        }
+
+    }
+    createRain();
+
+    // Function to use random number with a given Min and Max.
+    function random(minNum, maxNum){
+        return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
     }
 
 </script>
