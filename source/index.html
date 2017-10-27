@@ -219,7 +219,167 @@
             width: 100px;
             background: white;
             opacity: .5;
+            cursor: pointer;
         }
+
+
+
+        /* #################### THIRD SCENE STYLE ##########################  */
+
+        #sc-3 {
+            width: 100%;
+            height: 100%;
+            background-image: url(scene3/scene3-background.jpg);
+        }
+
+        .sc-3-continue {
+            height: 100px;
+            width: 100px;
+            background: white;
+            opacity: .5;
+            cursor: pointer;
+        }
+
+
+
+
+
+        /* #################### FOURTH SCENE STYLE ##########################  */
+
+        #sc-4 {
+            width: 100%;
+            height: 100%;
+            background-image: url(scene4/scene4-background.jpg);
+        }
+
+        .sc-4-continue {
+            height: 100px;
+            width: 100px;
+            background: white;
+            opacity: .5;
+            cursor: pointer;
+        }
+
+
+
+        /* #################### FIFTH SCENE STYLE ##########################  */
+
+        #sc-5 {
+            width: 100%;
+            height: 100%;
+            background-image: url(scene5/scene5-background.jpg);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sc-5-foreground {
+            width: 100%;
+            height: 100%;
+            background-image: url(scene5/scene5-foreground.png);
+            position: absolute;
+            z-index: 10
+        }
+
+
+        .sc-5-continue {
+            height: 100px;
+            width: 100px;
+            background: white;
+            opacity: .5;
+            position: absolute;
+            z-index: 20;
+            cursor: pointer;
+        }
+
+
+
+        /* #################### SIXTH SCENE STYLE ##########################  */
+
+        #sc-6 {
+            width: 100%;
+            height: 100%;
+            background-image: url(scene6/scene6-background.jpg);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sc-6-continue {
+            height: 100px;
+            width: 100px;
+            background: white;
+            opacity: .5;
+            cursor: pointer;
+        }
+
+
+
+
+
+        /* #################### SEVENTH SCENE STYLE ##########################  */
+
+        #sc-7 {
+            width: 100%;
+            height: 100%;
+            background-image: url(scene7/scene7-background.jpg);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sc-7-continue {
+            height: 100px;
+            width: 100px;
+            background: white;
+            opacity: .5;
+            cursor: pointer;
+        }
+
+
+
+
+
+        /* #################### SEVENTH SCENE STYLE ##########################  */
+
+        #sc-8 {
+            width: 100%;
+            height: 100%;
+            background-image: url(scene8/scene8-background.jpg);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sc-8-continue {
+            height: 100px;
+            width: 100px;
+            background: white;
+            opacity: .5;
+            cursor: pointer;
+        }
+
+
+
+
+        /* #################### SEVENTH SCENE STYLE ##########################  */
+
+        .credits-center{
+            color:white;
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            font-size:200%;
+        }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -280,6 +440,7 @@
                     <source src="intro/rain-thunder.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+
             </div>
 
 
@@ -308,24 +469,54 @@
 
             <!-- ################ Scene 3 ################## -->
             <div id="sc-3" class="hide">
+                <div class="sc-3-continue"></div>
 
             </div>
 
 
             <!-- ################ Scene 4 ################## -->
             <div id="sc-4" class="hide">
+                <div class="sc-4-continue"></div>
 
             </div>
 
 
             <!-- ################ Scene 5 ################## -->
             <div id="sc-5" class="hide">
+                <div class="sc-5-foreground"></div>
+                <div class="sc-5-continue"></div>
+                <div class="rain"></div>
+
+            </div>
+
+            <!-- ################ Scene 6 ################## -->
+            <div id="sc-6" class="hide">
+                <div class="sc-6-continue"></div>
+
+            </div>
+
+            <!-- ################ Scene 7 ################## -->
+            <div id="sc-7" class="hide">
+                <div class="sc-7-continue"></div>
+
+            </div>
+
+            <!-- ################ Scene 8 ################## -->
+            <div id="sc-8" class="hide">
+                <div class="sc-8-continue"></div>
 
             </div>
 
 
             <!-- ################ Credits ################## -->
             <div id="credits" class="hide">
+                <div class="credits-center">
+                    <h2>Credits</h2>
+                    <p>Psycho: Alma</p>
+                    <p>Maniac: Alma 2</p>
+                    <p>Catering: not Alma...   &#x1F612;</p>
+
+                </div>
 
             </div>
 
@@ -379,7 +570,7 @@
             let interval = random(500,6000);
             setTimeout(introRandomBackground, interval);
         } else {
-            console.log("intro-deactivated")
+            console.log("intro-deactivated");
         }
     }
     */
@@ -435,7 +626,7 @@
             let interval = random(500, 4000)
             setTimeout(sc1NeonSignRandomGlow, interval);
         } else {
-            console.log("sc1NeonSign-deactivated")
+            console.log("sc1NeonSign-deactivated");
         }
     }
 
@@ -457,7 +648,7 @@
             let interval = random(10, 2000)
             setTimeout(sc1WindowRandomGlow, interval);
         } else {
-            console.log("sc1-deactivated")
+            console.log("sc1-deactivated");
         }
     }
 
@@ -476,7 +667,7 @@
 
         //fade out scene
         fadeOut(scene1);
-        setTimeout('fadeIn(scene2)', 1200)
+        setTimeout('fadeIn(scene2)', 1200);
 
         //disable the sc1WindowRandomGlow() function
         sc1Active = false;
@@ -487,6 +678,7 @@
     // ===========================  SECOND SCENE =======================================
     // ================================================================================
     let scene2 = document.querySelector("#sc-2");
+    let sc2Active = false;
     let scene2Continue = document.querySelector(".sc-2-continue");
 
     console.log("Second Scene")
@@ -495,21 +687,217 @@
     scene2Continue.addEventListener('click', leaveSecondScene);
 
     function leaveSecondScene() {
-        console.log("leave first scene");
+        console.log("leave second scene");
 
-        //fade out audio and stop flicker audio
-        fadeOutAudio(neonAudio);
-        fadeOutAudio(rainThunderAudio);
-        neonFlickerAudio.pause();
+        //fade out audio and start next scenes audio
+        rainThunderAudio.volume = .10;
 
-        //fade out scene
+        //fade out scene and fade in next one
         fadeOut(scene2);
-        //fadeIn(scene2);
+        setTimeout('fadeIn(scene3)', 1200);
 
-        //disable the sc1WindowRandomGlow() function
-        sc1Active = false;
+        //disable the function of the scene and activate next scene
+        sc2Active = false;
+        sc3Active = true;
 
     }
+
+
+
+
+    // ===========================  THIRD SCENE ======================================
+    // ================================================================================
+    let scene3 = document.querySelector("#sc-3");
+    let sc3Active = false;
+    let scene3Continue = document.querySelector(".sc-3-continue");
+
+    console.log("Third Scene")
+
+
+    scene3Continue.addEventListener('click', leaveThirdScene);
+
+    function leaveThirdScene() {
+        console.log("leave third scene");
+
+        //fade out audio and start next scenes audio
+        rainThunderAudio.volume = .10;
+
+        //fade out scene and fade in next one
+        fadeOut(scene3);
+        setTimeout('fadeIn(scene4)', 1200);
+
+        //disable the function of the scene and activate next scene
+        sc3Active = false;
+        sc4Active = false;
+
+    }
+
+
+
+
+    // ===========================  FOURTH SCENE ======================================
+    // ================================================================================
+    let scene4 = document.querySelector("#sc-4");
+    let sc4Active = false;
+    let scene4Continue = document.querySelector(".sc-4-continue");
+
+    console.log("Fourth Scene")
+
+
+    scene4Continue.addEventListener('click', leaveFourthScene);
+
+    function leaveFourthScene() {
+        console.log("leave fourth scene");
+
+        //fade out audio and start next scenes audio
+        rainThunderAudio.volume = .40;
+
+        //fade out scene and fade in next one
+        fadeOut(scene4);
+        setTimeout('fadeIn(scene5)', 1200);
+
+        //disable the function of the scene and activate next scene
+        sc4Active = false;
+        sc5Active = true;
+
+
+    }
+
+
+
+
+    // ===========================  FIFTH SCENE ======================================
+    // ================================================================================
+    let scene5 = document.querySelector("#sc-5");
+    let sc5Active = false;
+    let scene5Continue = document.querySelector(".sc-5-continue");
+
+    console.log("Fifth Scene")
+
+
+    scene5Continue.addEventListener('click', leaveFifthScene);
+
+    function leaveFifthScene() {
+        console.log("leave fifth scene");
+
+        //fade out audio and start next scenes audio
+        rainThunderAudio.volume = .10;
+
+        //fade out scene and fade in next one
+        fadeOut(scene5);
+        setTimeout('fadeIn(scene6)', 1200);
+
+        //disable the function of the scene and activate next scene
+        sc5Active = false;
+        sc6Active = true;
+
+    }
+
+
+    // ===========================  SIXTH SCENE ======================================
+    // ================================================================================
+    let scene6 = document.querySelector("#sc-6");
+    let sc6Active = false;
+    let scene6Continue = document.querySelector(".sc-6-continue");
+
+    console.log("Sixth Scene")
+
+
+    scene6Continue.addEventListener('click', leaveSixthScene);
+
+    function leaveSixthScene() {
+        console.log("leave sixth scene");
+
+        //fade out audio and start next scenes audio
+        rainThunderAudio.volume = .10;
+
+        //fade out scene and fade in next one
+        fadeOut(scene6);
+        setTimeout('fadeIn(scene7)', 1200);
+
+        //disable the function of the scene and activate next scene
+        sc6Active = false;
+        sc7Active = true;
+
+    }
+
+
+
+    // ===========================  SEVENTH SCENE ======================================
+    // ================================================================================
+    let scene7 = document.querySelector("#sc-7");
+    let sc7Active = false;
+    let scene7Continue = document.querySelector(".sc-7-continue");
+
+    console.log("Seventh Scene")
+
+
+    scene7Continue.addEventListener('click', leaveSeventhScene);
+
+    function leaveSeventhScene() {
+        console.log("leave seventh scene");
+
+        //fade out audio and start next scenes audio
+        rainThunderAudio.volume = .10;
+
+        //fade out scene and fade in next one
+        fadeOut(scene7);
+        setTimeout('fadeIn(scene8)', 1200);
+
+        //disable the function of the scene and activate next scene
+        sc7Active = false;
+        sc8Active = true;
+
+    }
+
+
+    // ===========================  EIGTH SCENE ======================================
+    // ================================================================================
+    let scene8 = document.querySelector("#sc-8");
+    let sc8Active = false;
+    let scene8Continue = document.querySelector(".sc-8-continue");
+
+    console.log("Eigth Scene")
+
+
+    scene8Continue.addEventListener('click', leaveEightScene);
+
+    function leaveEightScene() {
+        console.log("leave eigth scene");
+
+        //fade out audio and start next scenes audio
+        rainThunderAudio.volume = .10;
+
+        //fade out scene and fade in next one
+        fadeOut(scene8);
+        setTimeout('fadeIn(credits)', 1200);
+
+        //disable the function of the scene and activate next scene
+        sc8Active = false;
+        //sc7Active = true;
+
+    }
+
+    // ===========================  CREDITS ===========================================
+    // ================================================================================
+    let credits = document.querySelector("#credits");
+
+
+    console.log("Credits Scene")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -593,6 +981,8 @@
     }
     createRain();
 
+
+
     // Function to use random number with a given Min and Max.
     function random(minNum, maxNum) {
         return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
@@ -601,8 +991,18 @@
     function delay(functionToDelay, time) {
         console.log("delay started")
         setTimeout(functionToDelay, time);
-
     }
+
+
+
+    // Play Raind and Thunder Audio in loop without a gap between each loop
+    rainThunderAudio.addEventListener('timeupdate', function() {
+        var buffer = .44
+        if (this.currentTime > this.duration - buffer) {
+            this.currentTime = 0
+            this.play()
+        }
+    }, false);
 
 </script>
 
