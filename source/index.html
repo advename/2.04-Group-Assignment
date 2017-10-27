@@ -440,6 +440,10 @@
                     <source src="intro/rain-thunder.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <audio autoplay class="twelveVacenciesA">
+                    <source src="intro/twelve-vacencies.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
 
             </div>
 
@@ -463,6 +467,11 @@
                 <div class="sc-2-object-4"></div>
                 <div class="sc-2-object-5"></div>
                 <div class="sc-2-continue"></div>
+                <audio class="nobodyEverA">
+                    <source src="scene2/nobodyever.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
 
             </div>
 
@@ -541,13 +550,13 @@
 
     //Audio of INTRO SCENE
     let neonFlickerAudio = document.querySelector(".neon-flickerA")
-    neonFlickerAudio.volume = 1;
+    neonFlickerAudio.volume = .5;
     let neonAudio = document.querySelector(".neonA")
     neonAudio.play();
-    neonAudio.volume = 1;
+    neonAudio.volume = .5;
     let rainThunderAudio = document.querySelector(".rain-thunder-audioA")
     rainThunderAudio.play();
-    rainThunderAudio.volume = 1;
+    rainThunderAudio.volume = .5;
 
     /*
     // Change Intro Background randomly with flickering sound
@@ -668,6 +677,7 @@
         //fade out scene
         fadeOut(scene1);
         setTimeout('fadeIn(scene2)', 1200);
+        setTimeout('nobodyEverA.play()', 3200);
 
         //disable the sc1WindowRandomGlow() function
         sc1Active = false;
@@ -680,6 +690,7 @@
     let scene2 = document.querySelector("#sc-2");
     let sc2Active = false;
     let scene2Continue = document.querySelector(".sc-2-continue");
+    let nobodyEverA = document.querySelector(".nobodyEverA")
 
     console.log("Second Scene")
 
