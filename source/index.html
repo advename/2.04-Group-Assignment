@@ -747,7 +747,7 @@
             position: relative;
             display: inline-block;
             width: 50px;
-            height: 28px;
+            height: 26px;
         }
 
         .switch input {
@@ -758,7 +758,7 @@
             position: absolute;
             cursor: pointer;
             top: 0;
-            left: 0;
+            left: 1px;
             right: 0;
             bottom: 0;
             background-color: #ccc;
@@ -771,7 +771,7 @@
             content: "";
             height: 19px;
             width: 19px;
-            left: 1px;
+            left: 4px;
             bottom: 4px;
             background-color: white;
             -webkit-transition: .4s;
@@ -787,9 +787,9 @@
         }
 
         input:checked+.slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
+            -webkit-transform: translateX(22px);
+            -ms-transform: translateX(22px);
+            transform: translateX(22px);
         }
 
         .slider.round {
