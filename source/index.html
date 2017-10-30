@@ -59,18 +59,22 @@
             position: relative;
         }
 
-        /* With the Javascript, changing Sprite sheet position randomly (no keyframe used here for random animation) */
 
-        /* Intro Button to start */
-        .intro-bates-sign{
+        /* Bates sign in intro */
+
+        .intro-bates-sign {
             background-image: url(intro/intro-bates-glow.png);
             height: 429px;
             width: 551px;
             position: absolute;
             top: 89px;
             left: 236px;
+            pointer-events:none;
+            cursor: none;
+            z-index: 10;
 
         }
+
         .intro-bates-glow {
             animation: intro-batesGlow .7s;
         }
@@ -79,19 +83,45 @@
             50% {
                 -webkit-filter: drop-shadow(0px 0px 30px #f7f15b);
                 filter: drop-shadow (0px 0px 30px #f7f15b);
-                transform: scale(1.065);
+                transform: scale(1.055);
                 opacity: .5;
             }
         }
 
+        /* Vacancies sign in intro */
+
+        .intro-vacany-sign {
+            background-image: url(intro/intro-vacancy-glow.png);
+            height: 97px;
+            width: 262px;
+            position: absolute;
+            top: 544px;
+            left: 449px;
+
+        }
+
+        .intro-vacancy-glow {
+            animation: intro-vacancyGlow .7s ;
+        }
+
+        @keyframes intro-vacancyGlow {
+            50% {
+                -webkit-filter: drop-shadow(0px 0px 30px #f7f15b);
+                filter: drop-shadow (0px 0px 30px #f7f15b);
+                transform: scale(1.055) translateX(0px);
+                opacity: .6;
+            }
+        }
+
+
         .intro-click-to-start {
-            background: white;
             width: 560px;
             height: 430px;
             position: absolute;
             top: 100px;
             left: 220px;
-            opacity: 0;
+            z-index: 20;
+
         }
 
         /* Cursor changes to pointer on hovering over Start button */
@@ -781,20 +811,8 @@
 
         /* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         /* OLIIIIIIVVIIIIIIAAAAAAAAAAA END*/
+
     </style>
 
 </head>
@@ -807,6 +825,8 @@
             <!-- ############### Intro Scene ############### -->
             <div id="intro" class="">
                 <div class="intro-bates-sign">
+                </div>
+                <div class="intro-vacany-sign">
                 </div>
                 <div class="intro-click-to-start">
                 </div>
@@ -979,7 +999,7 @@
     // Change Intro Background randomly with flickering sound
     let introBatesGlow = document.querySelector(".intro-bates-sign")
 
-    setTimeout(introRandomBates, random(2000,4000));
+    setTimeout(introRandomBates, random(2000, 4000));
 
     function introRandomBates() {
 
@@ -995,12 +1015,39 @@
             }, 100);
             console.log("intro-still-active")
             //wait random between 500ms and 6000ms to change background again
-            let interval = random(800,4000);
+            let interval = random(800, 4000);
             setTimeout(introRandomBates, interval);
         } else {
             console.log("intro-deactivated");
         }
     }
+
+    let introVacancyGlow = document.querySelector(".intro-vacany-sign")
+
+    setTimeout(introRandomVacancy, random(2000, 4000));
+
+    function introRandomVacancy() {
+        // check if introActive is true, if so, continue, otherwhise, stop function
+        // by not calling it again
+        if (introActive === true) {
+            //adding class intro-anim... to change background and play flicker sound
+            introVacancyGlow.classList.add("intro-vacancy-glow");
+            neonFlickerAudio.play();
+            //wait 100ms and then remove the class for normal background
+            setTimeout(function() {
+                introVacancyGlow.classList.remove("intro-vacancy-glow");
+            }, 100);
+            console.log("intro-still-active")
+            //wait random between 500ms and 6000ms to change background again
+            let interval = random(800, 4000);
+            setTimeout(introRandomVacancy, interval);
+        } else {
+            console.log("intro-deactivated");
+        }
+    }
+
+
+
 
 
 
@@ -1108,13 +1155,14 @@
     function leaveFirstScene() {
         console.log("leave first scene");
 
+
         //preLoad Images for next Scene for clean transition
-        preLoadImage("scene2/screen2-background.jpg");
-        preLoadImage("scene2/screen2-object1-window.png");
-        preLoadImage("scene2/screen2-object2-lamp.png");
-        preLoadImage("scene2/screen2-object3-key.png");
-        preLoadImage("scene2/screen2-object4-vase.png");
-        preLoadImage("scene2/screen2-object5-plant.png");
+        preLoadImage("scene3/scene3-background.jpg");
+        preLoadImage("scene3/scene3-object1.png");
+        preLoadImage("scene3/scene3-object2.png");
+        preLoadImage("scene3/scene3-object3.png");
+        preLoadImage("scene3/scene3-object4.png");
+
 
         //fade out audio and stop flicker audio
         fadeOutAudio(neonAudio);
@@ -1147,6 +1195,17 @@
     function leaveSecondScene() {
         console.log("leave second scene");
 
+
+
+        //preLoad Images for next Scene for clean transition
+        preLoadImage("scene4/scene4-background.jpg");
+        preLoadImage("scene4/scene4-object1.png");
+        preLoadImage("scene4/scene4-object2.png");
+        preLoadImage("scene4/scene4-object3.png");
+        preLoadImage("scene4/scene4-object4.png");
+        preLoadImage("scene4/scene4-object5.png");
+
+
         //fade out audio and start next scenes audio
         rainThunderAudio.volume = .10;
 
@@ -1177,6 +1236,15 @@
     function leaveThirdScene() {
         console.log("leave third scene");
 
+
+        //preLoad Images for next Scene for clean transition
+        preLoadImage("scene5/scene5-background.jpg");
+        preLoadImage("scene5/scene5-foreground.png");
+        preLoadImage("scene5/scene5-object1.png");
+        preLoadImage("scene5/scene5-object2.png");
+        preLoadImage("scene5/scene5-object3.png");
+        preLoadImage("scene5/scene5-object4.png");
+
         //fade out audio and start next scenes audio
         rainThunderAudio.volume = .10;
 
@@ -1206,6 +1274,12 @@
 
     function leaveFourthScene() {
         console.log("leave fourth scene");
+
+        //preLoad Images for next Scene for clean transition
+        preLoadImage("scene6/scene6-background.jpg");
+        preLoadImage("scene6/scene6-object1.png");
+        preLoadImage("scene6/scene6-object2.png");
+        preLoadImage("scene6/scene6-object3.png");
 
         //fade out audio and start next scenes audio
         rainThunderAudio.volume = .40;
@@ -1238,6 +1312,14 @@
     function leaveFifthScene() {
         console.log("leave fifth scene");
 
+        //preLoad Images for next Scene for clean transition
+        preLoadImage("scene7/scene7-background.jpg");
+        preLoadImage("scene7/scene7-object1.png");
+        preLoadImage("scene7/scene7-object2.png");
+        preLoadImage("scene7/scene7-object3.png");
+        preLoadImage("scene7/scene7-object4.png");
+        preLoadImage("scene7/scene7-object5.png");
+
         //fade out audio and start next scenes audio
         rainThunderAudio.volume = .10;
 
@@ -1265,6 +1347,12 @@
 
     function leaveSixthScene() {
         console.log("leave sixth scene");
+
+        //preLoad Images for next Scene for clean transition
+        preLoadImage("scene8/scene8-background.jpg");
+        preLoadImage("scene8/scene8-object1.png");
+        preLoadImage("scene8/scene8-object2.png");
+        preLoadImage("scene8/scene8-object3.png");
 
         //fade out audio and start next scenes audio
         rainThunderAudio.volume = .10;
@@ -1495,12 +1583,8 @@
 
 
 
-
-
-
-
-
     /* OLIIIIIIVVIIIIIIAAAAAAAAAAA END*/
+
 </script>
 
 </html>
