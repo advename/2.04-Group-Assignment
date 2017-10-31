@@ -447,8 +447,21 @@
  let scene8 = document.querySelector("#sc-8");
  let sc8Active = false;
  let scene8Continue = document.querySelector(".sc-8-continue");
+ let sc8Car = document.querySelector(".sc-8-object-2");
+ let sc8Swamp = document.querySelector(".sc-8-object-1");
+ let sc8Lights = document.querySelector(".sc-8-object-3");
+ let rain = document.querySelector(".rain");
 
- console.log("Eigth Scene")
+
+ sc8Car.addEventListener('click', sc8SinkCar);
+
+ function sc8SinkCar() {
+     sc8Swamp.classList.add("sc-8-object-1Scale");
+     sc8Car.classList.add("sc-8-object-SinkCar");
+     sc8Lights.classList.add("hide");
+    setTimeout('fadeInSlow(creditsHeader)', 600);
+     setTimeout(leaveEightScene, 3000);
+ }
 
 
  scene8Continue.addEventListener('click', leaveEightScene);
@@ -461,7 +474,7 @@
 
      //fade out scene and fade in next one
      fadeOut(scene8);
-     setTimeout('fadeIn(credits)', 1200);
+     setTimeout('fadeIn(credits)', 3200);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -579,6 +592,23 @@
          op = op + 0.1;
          element.classList.remove("hide");
      }, 50);
+ }
+ function fadeInSlow(element) {
+
+     var op = 0.1; // initial opacity
+     var timer = setInterval(function () {
+         // if completely faded away, stop timer and add .hide class to element
+         if (op >= 0.9) {
+             clearInterval(timer);
+             element.classList.remove("hide");
+             console.log("delay finished")
+         }
+         // else, continue fading in
+         element.style.opacity = op;
+         element.style.filter = 'alpha(opacity=' + op + ")";
+         op = op + 0.1;
+         element.classList.remove("hide");
+     }, 150);
  }
 
  // Function to fade away audio
