@@ -1,5 +1,6 @@
 /* Reset body's margin and padidng to 0 for full-width window
 + position relative if position absolute child's are used */
+
 body {
     margin: 0;
     padding: 0;
@@ -9,6 +10,7 @@ body {
 
 /* Position our main container in the middle of the screen with
 a fixed width and height, relative to body-container */
+
 #body-container {
     width: 100%;
     height: 100%;
@@ -29,6 +31,7 @@ a fixed width and height, relative to body-container */
 }
 
 /* Hide a complete div or element */
+
 .hide {
     display: none;
 }
@@ -37,6 +40,7 @@ a fixed width and height, relative to body-container */
 /* #################### INTRO STYLE ###############################  */
 
 /* Intro scene initial setup */
+
 #intro {
     width: 100%;
     height: 100%;
@@ -47,6 +51,7 @@ a fixed width and height, relative to body-container */
 
 
 /* Bates sign in intro */
+
 .intro-bates-sign {
     background-image: url(intro/intro-bates-glow.png);
     height: 429px;
@@ -74,6 +79,7 @@ a fixed width and height, relative to body-container */
 }
 
 /* Vacancies sign in intro */
+
 .intro-vacany-sign {
     background-image: url(intro/intro-vacancy-glow.png);
     height: 97px;
@@ -109,6 +115,7 @@ a fixed width and height, relative to body-container */
 }
 
 /* Cursor changes to pointer on hovering over Intro Start button */
+
 .intro-click-to-start:hover {
     cursor: pointer;
 }
@@ -117,6 +124,7 @@ a fixed width and height, relative to body-container */
 /* #################### FIRST SCENE STYLE ##########################  */
 
 /* First scene initial setup */
+
 #sc-1 {
     width: 100%;
     height: 100%;
@@ -126,6 +134,7 @@ a fixed width and height, relative to body-container */
 }
 
 /* First scene window setup */
+
 .sc-1-window {
     background-image: url(scene1/glowy-windows.png);
     width: 89px;
@@ -137,6 +146,7 @@ a fixed width and height, relative to body-container */
 }
 
 /* With javascript, adding randomly and removing animation of glowing window */
+
 .sc-1-window-glow {
     animation: sc-1-windowGlow .4s;
 }
@@ -186,6 +196,7 @@ a fixed width and height, relative to body-container */
 /* #################### SECOND SCENE STYLE ##########################  */
 
 /* Second scene initial setup */
+
 #sc-2 {
     width: 100%;
     height: 100%;
@@ -370,22 +381,52 @@ a fixed width and height, relative to body-container */
 
 .sc-4-object-4 {
     background-image: url(scene4/scene4-object4.png);
+    background-repeat: no-repeat;
+    background-position: -43px 0px;
     height: 183px;
     width: 725px;
     position: absolute;
     top: -49px;
-    left: 270px;
+    left: 275px;
     transform: scale(.47);
 }
 
 .sc-4-object-5 {
     background-image: url(scene4/scene4-object5.png);
+    background-repeat: no-repeat;
+    background-position: -100px 0px;
     height: 1408px;
     width: 817px;
     position: absolute;
+    z-index: 10;
     top: -391px;
-    left: 220px;
+    left: 252px;
     transform: scale(.47);
+}
+
+.sc-4-object-6 {
+    background-image: url(scene4/bloodyhand.png);
+    background-repeat: no-repeat;
+    background-position: -100px 0px;
+    opacity: 0.8;
+    height: 2595px;
+    width: 1542px;
+    position: absolute;
+    z-index: 9;
+    top: -941px;
+    left: -76px;
+    transform: scale(0.04) rotate(20deg);
+    ;
+}
+
+.sc-4-moveCurtain {
+    animation: sc-4-slideCurtain 1.8s linear forwards;
+}
+
+@keyframes sc-4-slideCurtain {
+    to {
+        background-position: -900px 0px;
+    }
 }
 
 
@@ -648,23 +689,66 @@ a fixed width and height, relative to body-container */
 
 /* #################### CREDITS SCENE STYLE ##########################  */
 
-#credits{
+#credits {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
 
 }
-.credits-container {
 
-}
-.credits-header{
-    background-image: url(scene8/scene8-object1.png);
-    width: 2582px;
-    height: 1481px;
+.credits-container {}
+
+.credits-header {
+    background-image: url(credits/credits-header.png);
+    width: 1330px;
+    height: 725px;
     position: absolute;
-    top: -313px;
-    left: -586px;
-    transform: scale(.46);
+    top: 0px;
+    left: 0px;
 }
-.credits-names{
 
+.credits-header-flickering {
+    animation: credits-headerFlickering .12s;
+}
+
+@keyframes credits-headerFlickering {
+    50% {
+        -webkit-filter: drop-shadow(0px 0px 5px #f7f15b);
+        filter: drop-shadow(0px 0px 5px #f7f15b);
+    }
+}
+
+.credits-names {
+    background-image: url(credits/credits-names.png);
+    width: 1330px;
+    height: 725px;
+    position: absolute;
+    top: 725px;
+    left: 0px;
+}
+
+.credits-names-flickering {
+    animation: credits-namesFlickering .12s;
+}
+
+@keyframes credits-namesFlickering {
+    50% {
+        -webkit-filter: drop-shadow(0px 0px 5px #f7f15b);
+        filter: drop-shadow(0px 0px 5px #f7f15b);
+    }
+}
+
+.credits-names-rollDown {
+    animation: credits-rollDown 2s forwards;
+}
+
+@keyframes credits-namesFlickering {
+    100% {
+        top: 0px;
+    }
 }
 
 
@@ -688,6 +772,7 @@ a fixed width and height, relative to body-container */
 /* #################### OTHER STUFF ##########################  */
 
 /* Rain animation - add to parent container overflow hidden and position relative in order to work */
+
 .drop {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(rgba(255, 255, 255, 0.6)));
     background: -moz-linear-gradient(top, rgba(13, 52, 58, 1) 0%, rgba(255, 255, 255, .6) 100%);
@@ -706,6 +791,7 @@ a fixed width and height, relative to body-container */
 }
 
 /* Container of rain on/off switcher */
+
 .rainNone {
     height: 65px;
     width: 300px;
@@ -731,6 +817,7 @@ a fixed width and height, relative to body-container */
 }
 
 /* Toggle Box Intro scene style */
+
 .switch {
     position: relative;
     display: inline-block;

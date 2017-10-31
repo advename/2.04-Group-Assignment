@@ -76,8 +76,8 @@
  preLoadImage("scene1/neon-sign-glow.png");
 
 
-// Do Stuff when we click on the introClicktoStart Button, such as fade out scene, change sound volume, play another sound,
-// preload already sound for next scene.
+ // Do Stuff when we click on the introClicktoStart Button, such as fade out scene, change sound volume, play another sound,
+ // preload already sound for next scene.
  introClickToStart.addEventListener('click', leaveIntroScene);
 
  function leaveIntroScene() {
@@ -295,6 +295,21 @@
  console.log("Fourth Scene")
 
 
+
+ let sc4bathRings = document.querySelector(".sc-4-object-4")
+ let sc4bathCurtain = document.querySelector(".sc-4-object-5")
+
+
+ sc4bathCurtain.addEventListener("click", function () {
+     console.log("move curtain");
+     sc4bathCurtain.classList.add("sc-4-moveCurtain")
+     sc4bathRings.classList.add("sc-4-moveCurtain")
+ })
+
+
+
+
+
  scene4Continue.addEventListener('click', leaveFourthScene);
 
  function leaveFourthScene() {
@@ -458,6 +473,63 @@
  // ===========================  CREDITS ===========================================
  // ================================================================================
  let credits = document.querySelector("#credits");
+ let creditsHeader = document.querySelector(".credits-header");
+ let creditsNames = document.querySelector(".credits-names");
+ let creditsActive = true;
+
+
+ creditsHeaderRandomFlickering();
+
+ // Neon sign random flicker with sound
+ function creditsHeaderRandomFlickering() {
+
+     // check if sceneActive is true, if so, continue, otherwhise, stop function by not calling it again
+     if (creditsActive === true) {
+         //adding class for animation
+         creditsHeader.classList.add("credits-header-flickering");
+         neonFlickerAudio.play();
+         //wait some time and then remove the class for normal state (animation disabled)
+         setTimeout(function () {
+             creditsHeader.classList.remove("credits-header-flickering");
+         }, 120);
+         console.log("credits-still-active")
+         //wait random to change run function again for animation
+         let interval = random(121, 4000)
+         setTimeout(creditsHeaderRandomFlickering, interval);
+     } else {
+         console.log("credits-deactivated");
+     }
+ }
+
+ creditsNamesRandomFlickering();
+
+ // Neon sign random flicker with sound
+ function creditsNamesRandomFlickering() {
+
+     // check if sceneActive is true, if so, continue, otherwhise, stop function by not calling it again
+     if (creditsActive === true) {
+         //adding class for animation
+         creditsNames.classList.add("credits-names-flickering");
+         neonFlickerAudio.play();
+         //wait some time and then remove the class for normal state (animation disabled)
+         setTimeout(function () {
+             creditsNames.classList.remove("credits-names-flickering");
+         }, 120);
+         console.log("credits-still-active")
+         //wait random to change run function again for animation
+         let interval = random(121, 4000)
+         setTimeout(creditsNamesRandomFlickering, interval);
+     } else {
+         console.log("credits-deactivated");
+     }
+ }
+
+
+
+
+
+
+
 
 
  console.log("Credits Scene")
@@ -595,7 +667,7 @@
      }
  }, false);
 
-// Function to preload images - using this maybe increases the user experience by not loading images when needed, but before
+ // Function to preload images - using this maybe increases the user experience by not loading images when needed, but before
  function preLoadImage(imageFileName) {
      var my_image = new Image();
      my_image.src = imageFileName;
