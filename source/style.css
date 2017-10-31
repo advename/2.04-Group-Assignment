@@ -784,7 +784,7 @@ a fixed width and height, relative to body-container */
 }
 
 .credits-names-rollDown {
-    animation: credits-rollDown 5s linear forwards;
+    animation: credits-rollDown 9s linear forwards;
 }
 
 @keyframes credits-rollDown {

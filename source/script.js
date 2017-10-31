@@ -260,7 +260,7 @@
  let sc3Active = false;
  let scene3Continue = document.querySelector(".sc-3-continue");
  let parlourA = document.querySelector(".parlourA");
- parlourA.volume = .4;
+ parlourA.volume = .6;
 
  console.log("Third Scene")
 
@@ -331,7 +331,7 @@
 
 
  let plant = document.querySelector(".sc-4-object-1");
- let vaseBreakSound = document.querySelector("#vaseBreaking");
+ let vaseBreakSound = document.querySelector(".vaseBreaking");
 
 
  sc4bathCurtain.addEventListener("click", function () {
@@ -455,6 +455,7 @@
 
      //fade out scene and fade in next one
      fadeOut(scene6);
+     fadeOutAudio(stairsA);
      setTimeout('fadeIn(scene7)', 1200);
      setTimeout('motherBedroomA.play()', 1800);
 
@@ -490,7 +491,9 @@
 
      //fade out scene and fade in next one
      fadeOut(scene7);
+     fadeOutAudio(motherBedroomA);
      setTimeout('fadeIn(scene8)', 1200);
+
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -518,7 +521,10 @@
      sc8Car.classList.add("sc-8-object-SinkCar");
      sc8Lights.classList.add("hide");
      setTimeout('fadeInSlow(creditsHeader)', 600);
+     swampSoundA.play();
+     setTimeout('finalSoundA.play()', 1000);
      setTimeout(leaveEightScene, 3000);
+
  }
 
 
@@ -547,6 +553,12 @@
  let creditsHeader = document.querySelector(".credits-header");
  let creditsNames = document.querySelector(".credits-names");
  let creditsActive = false;
+
+
+ let finalSoundA = document.querySelector(".finalSoundA");
+ finalSoundA.volume = .4;
+ let swampSoundA = document.querySelector(".swampSoundA");
+ swampSoundA.volume = .4;
 
 
  creditsHeaderRandomFlickering();
