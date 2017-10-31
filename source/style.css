@@ -593,7 +593,7 @@ a fixed width and height, relative to body-container */
 
 
 
-/* #################### SEVENTH SCENE STYLE ##########################  */
+/* #################### EIGTH SCENE STYLE ##########################  */
 
 #sc-8 {
     width: 100%;
@@ -646,14 +646,25 @@ a fixed width and height, relative to body-container */
 
 
 
-/* #################### SEVENTH SCENE STYLE ##########################  */
+/* #################### CREDITS SCENE STYLE ##########################  */
 
-.credits-center {
-    color: white;
-    width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 200%;
+#credits{
+
+}
+.credits-container {
+
+}
+.credits-header{
+    background-image: url(scene8/scene8-object1.png);
+    width: 2582px;
+    height: 1481px;
+    position: absolute;
+    top: -313px;
+    left: -586px;
+    transform: scale(.46);
+}
+.credits-names{
+
 }
 
 
