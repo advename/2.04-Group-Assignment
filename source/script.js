@@ -6,7 +6,7 @@
  let introActive = true;
 
 
- //Audio of INTRO SCENE
+ //Audio of INTRO SCENE (but also used in other scenes such as Rain thunder and neon flickering)
  let neonFlickerAudio = document.querySelector(".neon-flickerA")
  neonFlickerAudio.volume = .5;
  let neonAudio = document.querySelector(".neonA")
@@ -17,7 +17,7 @@
  rainThunderAudio.volume = .5;
 
 
- // Change Intro Background randomly with flickering sound
+ // Change Intro Bates Sign randomly with flickering sound
  let introBatesGlow = document.querySelector(".intro-bates-sign")
 
  setTimeout(introRandomBates, random(2000, 4000));
@@ -43,6 +43,7 @@
      }
  }
 
+ // Change Intro Vacancies sign randomly with flickering sound
  let introVacancyGlow = document.querySelector(".intro-vacany-sign")
 
  setTimeout(introRandomVacancy, random(2000, 4000));
@@ -69,15 +70,14 @@
 
 
 
-
-
-
  //preLoad Images for next Scene for clean transition on Windows Load
  preLoadImage("scene1/scene1-background.jpg");
  preLoadImage("scene1/glowy-windows.png");
  preLoadImage("scene1/neon-sign-glow.png");
 
 
+// Do Stuff when we click on the introClicktoStart Button, such as fade out scene, change sound volume, play another sound,
+// preload already sound for next scene.
  introClickToStart.addEventListener('click', leaveIntroScene);
 
  function leaveIntroScene() {
@@ -97,9 +97,8 @@
      neonFlickerAudio.pause();*/
 
 
-
-
-     //fade out intro scene
+     //fade out intro scene and fade in scene 1 after 1200ms -
+     // because it takes around 1200ms for fadeOut to finish
      fadeOut(intro);
      setTimeout('fadeIn(scene1)', 1200);
 
@@ -107,7 +106,8 @@
      sc1NeonSignRandomGlow();
      sc1WindowRandomGlow();
 
-     //disable the introRandomBackground() function
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      introActive = false;
      sc1Active = true;
 
@@ -128,7 +128,7 @@
  // Neon sign random flicker with sound
  function sc1NeonSignRandomGlow() {
 
-     // check if scene Active is true, if so, continue, otherwhise, stop function by not calling it again
+     // check if sceneActive is true, if so, continue, otherwhise, stop function by not calling it again
      if (sc1Active === true) {
          //adding class for animation
          sc1NeonSign.classList.add("sc-1-neon-sign-flickering");
@@ -195,8 +195,10 @@
      setTimeout('fadeIn(scene2)', 1200);
      setTimeout('nobodyEverA.play()', 3200);
 
-     //disable the sc1WindowRandomGlow() function
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc1Active = false;
+     sc2Active = true;
 
  }
 
@@ -234,7 +236,8 @@
      fadeOut(scene2);
      setTimeout('fadeIn(scene3)', 1200);
 
-     //disable the function of the scene and activate next scene
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc2Active = false;
      sc3Active = true;
 
@@ -273,7 +276,8 @@
      fadeOut(scene3);
      setTimeout('fadeIn(scene4)', 1200);
 
-     //disable the function of the scene and activate next scene
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc3Active = false;
      sc4Active = false;
 
@@ -309,7 +313,8 @@
      fadeOut(scene4);
      setTimeout('fadeIn(scene5)', 1200);
 
-     //disable the function of the scene and activate next scene
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc4Active = false;
      sc5Active = true;
 
@@ -348,7 +353,8 @@
      fadeOut(scene5);
      setTimeout('fadeIn(scene6)', 1200);
 
-     //disable the function of the scene and activate next scene
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc5Active = false;
      sc6Active = true;
 
@@ -382,7 +388,8 @@
      fadeOut(scene6);
      setTimeout('fadeIn(scene7)', 1200);
 
-     //disable the function of the scene and activate next scene.
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc6Active = false;
      sc7Active = true;
 
@@ -412,7 +419,8 @@
      fadeOut(scene7);
      setTimeout('fadeIn(scene8)', 1200);
 
-     //disable the function of the scene and activate next scene
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc7Active = false;
      sc8Active = true;
 
@@ -440,9 +448,10 @@
      fadeOut(scene8);
      setTimeout('fadeIn(credits)', 1200);
 
-     //disable the function of the scene and activate next scene
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
      sc8Active = false;
-     //sc7Active = true;
+     //credits = true;
 
  }
 
@@ -586,6 +595,7 @@
      }
  }, false);
 
+// Function to preload images - using this maybe increases the user experience by not loading images when needed, but before
  function preLoadImage(imageFileName) {
      var my_image = new Image();
      my_image.src = imageFileName;
