@@ -3,10 +3,11 @@
  //Initialize let and give values
  let intro = document.querySelector("#intro");
  let introClickToStart = document.querySelector(".intro-click-to-start");
- let introActive = true;
+ let introActive = false;
 
 
  //Audio of INTRO SCENE (but also used in other scenes such as Rain thunder and neon flickering)
+
  let neonFlickerAudio = document.querySelector(".neon-flickerA")
  neonFlickerAudio.volume = .5;
  let neonAudio = document.querySelector(".neonA")
@@ -101,6 +102,10 @@
      // because it takes around 1200ms for fadeOut to finish
      fadeOut(intro);
      setTimeout('fadeIn(scene1)', 1200);
+     setTimeout('goodAfterNoonA.play()', 1800);
+     neonFlickerAudio.volume = .3;
+     neonAudio.volume = .3;
+     rainThunderAudio.volume = .3;
 
      //Activate functions from scene 1
      sc1NeonSignRandomGlow();
@@ -123,8 +128,8 @@
  let sc1Active = true;
  let sc1NeonSign = document.querySelector(".sc-1-neon-sign");
 
-
-
+ let goodAfterNoonA = document.querySelector(".goodAfterNoonA");
+ goodAfterNoonA.volume = .4;
  // Neon sign random flicker with sound
  function sc1NeonSignRandomGlow() {
 
@@ -187,6 +192,7 @@
 
      //fade out audio and stop flicker audio
      fadeOutAudio(neonAudio);
+     fadeOutAudio(goodAfterNoonA);
      rainThunderAudio.volume = .10;
      neonFlickerAudio.pause();
 
@@ -235,6 +241,8 @@
      //fade out scene and fade in next one
      fadeOut(scene2);
      setTimeout('fadeIn(scene3)', 1200);
+     setTimeout('parlourA.play()', 1800);
+     fadeOutAudio(nobodyEverA);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -251,6 +259,8 @@
  let scene3 = document.querySelector("#sc-3");
  let sc3Active = false;
  let scene3Continue = document.querySelector(".sc-3-continue");
+ let parlourA = document.querySelector(".parlourA");
+ parlourA.volume = .4;
 
  console.log("Third Scene")
 
@@ -275,6 +285,8 @@
      //fade out scene and fade in next one
      fadeOut(scene3);
      setTimeout('fadeIn(scene4)', 1200);
+     setTimeout('bathroomA.play()', 1800);
+     fadeOutAudio(parlourA);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -291,6 +303,8 @@
  let scene4 = document.querySelector("#sc-4");
  let sc4Active = false;
  let scene4Continue = document.querySelector(".sc-4-continue");
+ let bathroomA = document.querySelector(".bathroomA");
+ bathroomA.volume = .4;
 
  console.log("Fourth Scene")
 
@@ -305,6 +319,37 @@
      sc4bathCurtain.classList.add("sc-4-moveCurtain")
      sc4bathRings.classList.add("sc-4-moveCurtain")
  })
+
+
+ let skra = document.querySelector(".sc-4-object-2");
+ let skraA = document.querySelector(".skraA");
+ skra.addEventListener('click', function () {
+     console.log("skraaaaaaa")
+
+     skraA.play();
+ });
+
+
+ let plant = document.querySelector(".sc-4-object-1");
+ let vaseBreakSound = document.querySelector("#vaseBreaking");
+
+
+ sc4bathCurtain.addEventListener("click", function () {
+
+     console.log("move curtain");
+     sc4bathCurtain.classList.add("sc-4-moveCurtain");
+     sc4bathRings.classList.add("sc-4-moveCurtain");
+
+     setTimeout(function () {
+         console.log("plant falling");
+         plant.classList.add("plantFalling");
+         vaseBreakSound.play();
+     }, 1600);
+ })
+
+
+
+
 
 
 
@@ -322,11 +367,14 @@
      preLoadImage("scene6/scene6-object3.png");
 
      //fade out audio and start next scenes audio
-     rainThunderAudio.volume = .40;
+     rainThunderAudio.volume = .30;
 
      //fade out scene and fade in next one
      fadeOut(scene4);
      setTimeout('fadeIn(scene5)', 1200);
+     setTimeout('windowSeenA.play()', 1800);
+     fadeOutAudio(bathroomA);
+     fadeOutAudio(skraA);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -344,6 +392,8 @@
  let scene5 = document.querySelector("#sc-5");
  let sc5Active = false;
  let scene5Continue = document.querySelector(".sc-5-continue");
+ let windowSeenA = document.querySelector(".windowSeenA");
+ windowSeenA.volume = .4;
 
  console.log("Fifth Scene")
 
@@ -367,6 +417,8 @@
      //fade out scene and fade in next one
      fadeOut(scene5);
      setTimeout('fadeIn(scene6)', 1200);
+     setTimeout('stairsA.play()', 1800);
+     fadeOutAudio(windowSeenA);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -381,6 +433,8 @@
  let scene6 = document.querySelector("#sc-6");
  let sc6Active = false;
  let scene6Continue = document.querySelector(".sc-6-continue");
+ let stairsA = document.querySelector(".stairsA");
+ stairsA.volume = .4;
 
  console.log("Sixth Scene")
 
@@ -402,6 +456,7 @@
      //fade out scene and fade in next one
      fadeOut(scene6);
      setTimeout('fadeIn(scene7)', 1200);
+     setTimeout('motherBedroomA.play()', 1800);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -418,6 +473,9 @@
  let scene7 = document.querySelector("#sc-7");
  let sc7Active = false;
  let scene7Continue = document.querySelector(".sc-7-continue");
+
+ let motherBedroomA = document.querySelector(".motherBedroomA");
+ motherBedroomA.volume = .4;
 
  console.log("Seventh Scene")
 
@@ -459,7 +517,7 @@
      sc8Swamp.classList.add("sc-8-object-1Scale");
      sc8Car.classList.add("sc-8-object-SinkCar");
      sc8Lights.classList.add("hide");
-    setTimeout('fadeInSlow(creditsHeader)', 600);
+     setTimeout('fadeInSlow(creditsHeader)', 600);
      setTimeout(leaveEightScene, 3000);
  }
 
@@ -488,7 +546,7 @@
  let credits = document.querySelector("#credits");
  let creditsHeader = document.querySelector(".credits-header");
  let creditsNames = document.querySelector(".credits-names");
- let creditsActive = true;
+ let creditsActive = false;
 
 
  creditsHeaderRandomFlickering();
@@ -593,6 +651,7 @@
          element.classList.remove("hide");
      }, 50);
  }
+
  function fadeInSlow(element) {
 
      var op = 0.1; // initial opacity

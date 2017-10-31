@@ -402,6 +402,7 @@ a fixed width and height, relative to body-container */
     top: -391px;
     left: 252px;
     transform: scale(.47);
+    cursor: pointer;
 }
 
 .sc-4-object-6 {
@@ -426,6 +427,18 @@ a fixed width and height, relative to body-container */
 @keyframes sc-4-slideCurtain {
     to {
         background-position: -900px 0px;
+    }
+}
+
+.plantFalling {
+    animation: plantSmashing 0.12s forwards;
+}
+
+@keyframes plantSmashing {
+    to {
+        transform: rotate(90deg) scale(.47);
+        top: -60px;
+        left: 30px;
     }
 }
 
@@ -662,12 +675,14 @@ a fixed width and height, relative to body-container */
     left: -586px;
     transform: scale(.46);
 }
-.sc-8-object-1Scale{
+
+.sc-8-object-1Scale {
     animation: sc-8-ScaleSwamp 9s;
 }
-@keyframes sc-8-ScaleSwamp{
-    100%{
-        transform:scale(1.9);
+
+@keyframes sc-8-ScaleSwamp {
+    100% {
+        transform: scale(1.9);
     }
 }
 
@@ -681,16 +696,18 @@ a fixed width and height, relative to body-container */
     cursor: pointer;
     transform: scale(.48);
 }
-.sc-8-object-SinkCar{
+
+.sc-8-object-SinkCar {
     animation: sc-8-SinkCar 9s;
 }
-@keyframes sc-8-SinkCar{
-    30%{
-        opacity:0;
+
+@keyframes sc-8-SinkCar {
+    30% {
+        opacity: 0;
     }
-    100%{
+    100% {
         transform: scale(.43) rotate(-20deg);
-        opacity:0;
+        opacity: 0;
     }
 }
 
@@ -730,7 +747,7 @@ a fixed width and height, relative to body-container */
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index:30;
+    z-index: 30;
 }
 
 .credits-header-flickering {
@@ -747,12 +764,12 @@ a fixed width and height, relative to body-container */
 .credits-names {
     background-image: url(credits/credits-names.png);
     background-position: -465px -670px;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     width: 400px;
     height: 425px;
     position: absolute;
     top: 300px;
-    left: 445px;
+    left: 450px;
 }
 
 .credits-names-flickering {
