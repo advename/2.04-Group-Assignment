@@ -1,0 +1,804 @@
+/* Reset body's margin and padidng to 0 for full-width window
+        + position relative if position absolute child's are used */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Position our main container in the middle of the screen with
+        a fixed width and height, relative to body-container */
+
+#body-container {
+    width: 100%;
+    height: 100%;
+    background: grey;
+}
+
+#main-container {
+    width: 1330px;
+    height: 725px;
+    margin: auto;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: black;
+}
+
+/* Hide a complete div or element */
+
+.hide {
+    display: none;
+}
+
+
+/* #################### INTRO STYLE ###############################  */
+
+/* Intro scene initial setup */
+
+#intro {
+    width: 100%;
+    height: 100%;
+    background-image: url(intro/intro-background.jpg);
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* Bates sign in intro */
+
+.intro-bates-sign {
+    background-image: url(intro/intro-bates-glow.png);
+    height: 429px;
+    width: 551px;
+    position: absolute;
+    top: 89px;
+    left: 236px;
+    pointer-events: none;
+    cursor: none;
+    z-index: 10;
+
+}
+
+.intro-bates-glow {
+    animation: intro-batesGlow .7s;
+}
+
+@keyframes intro-batesGlow {
+    50% {
+        -webkit-filter: drop-shadow(0px 0px 30px #f7f15b);
+        filter: drop-shadow (0px 0px 30px #f7f15b);
+        transform: scale(1.055);
+        opacity: .5;
+    }
+}
+
+/* Vacancies sign in intro */
+
+.intro-vacany-sign {
+    background-image: url(intro/intro-vacancy-glow.png);
+    height: 97px;
+    width: 262px;
+    position: absolute;
+    top: 544px;
+    left: 449px;
+
+}
+
+.intro-vacancy-glow {
+    animation: intro-vacancyGlow .7s;
+}
+
+@keyframes intro-vacancyGlow {
+    50% {
+        -webkit-filter: drop-shadow(0px 0px 30px #f7f15b);
+        filter: drop-shadow (0px 0px 30px #f7f15b);
+        transform: scale(1.055) translateX(0px);
+        opacity: .6;
+    }
+}
+
+
+.intro-click-to-start {
+    width: 560px;
+    height: 430px;
+    position: absolute;
+    top: 100px;
+    left: 220px;
+    z-index: 20;
+
+}
+
+/* Cursor changes to pointer on hovering over Intro Start button */
+
+.intro-click-to-start:hover {
+    cursor: pointer;
+}
+
+
+/* #################### FIRST SCENE STYLE ##########################  */
+
+/* First scene initial setup */
+
+#sc-1 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene1/scene1-background.jpg);
+    overflow: hidden;
+    position: relative;
+}
+
+/* First scene window setup */
+
+.sc-1-window {
+    background-image: url(scene1/glowy-windows.png);
+    width: 89px;
+    height: 54px;
+    position: absolute;
+    top: 538.5px;
+    left: 797px;
+    opacity: .7;
+}
+
+/* With javascript, adding randomly and removing animation of glowing window */
+
+.sc-1-window-glow {
+    animation: sc-1-windowGlow .4s;
+}
+
+@keyframes sc-1-windowGlow {
+    50% {
+        -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+        filter: drop-shadow(5px 5px 20px #f7f15b);
+    }
+}
+
+/* Cursor changes to pointer on hovering over Window */
+
+.sc-1-window:hover {
+    cursor: pointer;
+    -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+    filter: drop-shadow(5px 5px 20px #f7f15b);
+}
+
+.sc-1-neon-sign {
+    background-image: url(scene1/neon-sign-glow.png);
+    width: 286px;
+    height: 257px;
+    position: absolute;
+    top: 229px;
+    left: 138px;
+    opacity: .9;
+}
+
+.sc-1-neon-sign-flickering {
+    animation: sc-1-flickering .5s;
+}
+
+@keyframes sc-1-flickering {
+    50% {
+        -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+        filter: drop-shadow(5px 5px 20px #f7f15b);
+    }
+}
+
+.sc-1-neon-sign:hover {
+    -webkit-filter: drop-shadow(5px 5px 20px #f7f15b);
+    filter: drop-shadow(5px 5px 20px #f7f15b);
+}
+
+
+/* #################### SECOND SCENE STYLE ##########################  */
+
+/* Second scene initial setup */
+
+#sc-2 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene2/screen2-background.jpg);
+    overflow: hidden;
+    position: relative;
+
+}
+
+.sc-2-object-1 {
+    background-image: url(scene2/screen2-object1-window.png);
+    height: 232px;
+    width: 67px;
+    position: absolute;
+    top: 271px;
+    left: 484px;
+    transform: scale(.7);
+}
+
+.sc-2-object-2 {
+    background-image: url(scene2/screen2-object2-lamp.png);
+    height: 263px;
+    width: 392px;
+    position: absolute;
+    top: 202px;
+    left: 542px;
+    transform: scale(.45);
+}
+
+.sc-2-object-3 {
+    background-image: url(scene2/screen2-object3-key.png);
+    height: 233px;
+    width: 138px;
+    position: absolute;
+    top: 68px;
+    left: 926px;
+    transform: scale(.4);
+}
+
+.sc-2-object-4 {
+    background-image: url(scene2/screen2-object4-vase.png);
+    height: 625px;
+    width: 496px;
+    position: absolute;
+    top: 268px;
+    left: 426px;
+    transform: scale(.4);
+}
+
+.sc-2-object-5 {
+    background-image: url(scene2/screen2-object5-plant.png);
+    height: 733px;
+    width: 1458px;
+    position: absolute;
+    top: 187px;
+    left: -470px;
+    transform: scale(.47);
+
+}
+
+.sc-2-continue {
+    height: 100px;
+    width: 100px;
+    background: white;
+    opacity: .5;
+    cursor: pointer;
+}
+
+
+
+/* #################### THIRD SCENE STYLE ##########################  */
+
+#sc-3 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene3/scene3-background.jpg);
+    overflow: hidden;
+    position: relative;
+}
+
+.sc-3-continue {
+    height: 100px;
+    width: 100px;
+    background: white;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.sc-3-object-1 {
+    background-image: url(scene3/scene3-object1.png);
+    width: 1002px;
+    height: 1021px;
+    position: absolute;
+    top: -185px;
+    left: 489px;
+    transform: scale(.43);
+}
+
+.sc-3-object-2 {
+    background-image: url(scene3/scene3-object2.png);
+    width: 1002px;
+    height: 1021px;
+    position: absolute;
+    top: -185px;
+    left: 489px;
+    transform: scale(.43);
+    opacity: .5;
+}
+
+.sc-3-object-3 {
+    background-image: url(scene3/scene3-object3.png);
+    width: 1002px;
+    height: 1021px;
+    position: absolute;
+    top: -303px;
+    left: -369px;
+    transform: scale(.43);
+}
+
+.sc-3-object-4 {
+    background-image: url(scene3/scene3-object4.png);
+    width: 1002px;
+    height: 1021px;
+    position: absolute;
+    top: -90px;
+    left: 133px;
+    transform: scale(.43);
+
+}
+
+
+
+
+/* #################### FOURTH SCENE STYLE ##########################  */
+
+#sc-4 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene4/scene4-background.jpg);
+    overflow: hidden;
+    position: relative;
+}
+
+.sc-4-continue {
+    height: 100px;
+    width: 100px;
+    background: white;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.sc-4-object-1 {
+    background-image: url(scene4/scene4-object1.png);
+    height: 992px;
+    width: 717px;
+    position: absolute;
+    top: -215px;
+    left: -85px;
+    transform: scale(.47);
+
+}
+
+.sc-4-object-2 {
+    background-image: url(scene4/scene4-object2.png);
+    height: 358px;
+    width: 250px;
+    position: absolute;
+    top: 100px;
+    left: 970px;
+    transform: scale(.47);
+}
+
+.sc-4-object-3 {
+    background-image: url(scene4/scene4-object3.png);
+    height: 142px;
+    width: 133px;
+    position: absolute;
+    top: 567px;
+    left: 363px;
+    transform: scale(.47);
+}
+
+.sc-4-object-4 {
+    background-image: url(scene4/scene4-object4.png);
+    height: 183px;
+    width: 725px;
+    position: absolute;
+    top: -49px;
+    left: 270px;
+    transform: scale(.47);
+}
+
+.sc-4-object-5 {
+    background-image: url(scene4/scene4-object5.png);
+    height: 1408px;
+    width: 817px;
+    position: absolute;
+    top: -391px;
+    left: 220px;
+    transform: scale(.47);
+}
+
+
+
+
+
+
+
+
+/* #################### FIFTH SCENE STYLE ##########################  */
+
+#sc-5 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene5/scene5-background.jpg);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.sc-5-foreground {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene5/scene5-foreground.png);
+    position: absolute;
+    z-index: 10
+}
+
+.sc-5-continue {
+    height: 100px;
+    width: 100px;
+    background: white;
+    opacity: .5;
+    position: absolute;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.sc-5-object-1 {
+    background-image: url(scene5/scene5-object1.png);
+    width: 932px;
+    height: 1357px;
+    position: absolute;
+    top: -65px;
+    left: 784px;
+    transform: scale(.35);
+}
+
+.sc-5-object-2 {
+    background-image: url(scene5/scene5-object2.png);
+    width: 1428px;
+    height: 2382px;
+    position: absolute;
+    top: -855px;
+    left: -244px;
+    transform: scale(.35);
+}
+
+.sc-5-object-3 {
+    background-image: url(scene5/scene5-object3.png);
+    width: 415px;
+    height: 428px;
+    position: absolute;
+    top: 130px;
+    left: 635px;
+    transform: scale(.28);
+}
+
+
+
+
+
+
+
+
+
+/* #################### SIXTH SCENE STYLE ##########################  */
+
+#sc-6 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene6/scene6-background.jpg);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.sc-6-continue {
+    height: 100px;
+    width: 100px;
+    background: white;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.sc-6-object-1 {
+    background-image: url(scene6/scene6-object1.png);
+    width: 313px;
+    height: 331px;
+    position: absolute;
+    top: 185px;
+    left: -29px;
+    transform: scale(.5);
+}
+
+.sc-6-object-2 {
+    background-image: url(scene6/scene6-object2.png);
+    width: 950px;
+    height: 1825px;
+    position: absolute;
+    top: -540px;
+    left: 309px;
+    transform: scale(.48);
+}
+
+.sc-6-object-3 {
+    background-image: url(scene6/scene6-object3.png);
+    width: 1044px;
+    height: 1175px;
+    position: absolute;
+    top: -510px;
+    left: -129px;
+    transform: scale(.48);
+}
+
+
+
+
+/* #################### SEVENTH SCENE STYLE ##########################  */
+
+#sc-7 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene7/scene7-background.jpg);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.sc-7-continue {
+    height: 100px;
+    width: 100px;
+    background: white;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.sc-7-object-1 {
+    background-image: url(scene7/scene7-object1.png);
+    height: 425px;
+    width: 500px;
+    position: absolute;
+    top: -26px;
+    left: 284px;
+    transform: scale(.47);
+}
+
+.sc-7-object-2 {
+    background-image: url(scene7/scene7-object2.png);
+    height: 487px;
+    width: 512px;
+    position: absolute;
+    top: -40px;
+    left: 625px;
+    transform: scale(.47);
+}
+
+.sc-7-object-3 {
+    background-image: url(scene7/scene7-object3.png);
+    height: 425px;
+    width: 725px;
+    position: absolute;
+    top: 270px;
+    left: 765px;
+    transform: scale(.47);
+}
+
+.sc-7-object-4 {
+    background-image: url(scene7/scene7-object4.png);
+    height: 375px;
+    width: 312px;
+    position: absolute;
+    top: 397px;
+    left: -46px;
+    transform: scale(.53);
+}
+
+.sc-7-object-5 {
+    background-image: url(scene7/scene7-object5.png);
+    height: 537px;
+    width: 575px;
+    position: absolute;
+    top: 150px;
+    left: 60px;
+    transform: scale(.47);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #################### SEVENTH SCENE STYLE ##########################  */
+
+#sc-8 {
+    width: 100%;
+    height: 100%;
+    background-image: url(scene8/scene8-background.jpg);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.sc-8-continue {
+    height: 100px;
+    width: 100px;
+    background: white;
+    opacity: .5;
+    cursor: pointer;
+}
+
+.sc-8-object-1 {
+    background-image: url(scene8/scene8-object1.png);
+    width: 2582px;
+    height: 1481px;
+    position: absolute;
+    top: -313px;
+    left: -586px;
+    transform: scale(.46);
+}
+
+.sc-8-object-2 {
+    background-image: url(scene8/scene8-object2.png);
+    height: 729px;
+    width: 1381px;
+    position: absolute;
+    top: -43px;
+    left: 18px;
+    transform: scale(.48);
+}
+
+.sc-8-object-3 {
+    background-image: url(scene8/scene8-object3.png);
+    height: 267px;
+    width: 1081px;
+    position: absolute;
+    top: 287px;
+    left: 217px;
+    transform: scale(.49);
+    -webkit-filter: drop-shadow(15px 15px 30px #f7f15b);
+    filter: drop-shadow(15px 15px 30px #f7f15b);
+}
+
+
+
+/* #################### SEVENTH SCENE STYLE ##########################  */
+
+.credits-center {
+    color: white;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 200%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #################### OTHER STUFF ##########################  */
+
+/* Rain animation - add to parent container overflow hidden and position relative in order to work */
+
+.drop {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(rgba(255, 255, 255, 0.6)));
+    background: -moz-linear-gradient(top, rgba(13, 52, 58, 1) 0%, rgba(255, 255, 255, .6) 100%);
+    width: 1px;
+    height: 89px;
+    position: absolute;
+    bottom: 200px;
+    animation: fall .63s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        margin-top: 900px;
+    }
+}
+
+.rainNone {
+    height: 65px;
+    width: 300px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 630px;
+    left: 900px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 5px;
+
+}
+
+.rainNone p {
+    margin: 0;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+/* Toggle Box Intro scene style */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 1px;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #f5483b;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #f5483b;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
+
+/* OLIIIIIIVVIIIIIIAAAAAAAAAAA END*/
