@@ -391,6 +391,12 @@
 
  console.log("Fifth Scene")
 
+ let humanShadow = document.querySelector(".sc-5-object-4");
+
+ setTimeout(function () {
+     humanShadow.style.display = "block"
+ }, 4000)
+
 
  scene5Continue.addEventListener('click', leaveFifthScene);
 
@@ -431,6 +437,31 @@
  stairsA.volume = .4;
 
  console.log("Sixth Scene")
+
+
+ let chandelier = document.querySelector(".sc-6-object-3");
+ let chandelierSound = document.querySelector(".chandelierA");
+ let stairCase = document.querySelector(".sc-6-object-2");
+
+ setTimeout(function () {
+     console.log("chandelier glow");
+     chandelier.classList.add('glow');
+ }, 2000);
+
+ chandelier.addEventListener("click", function () {
+     console.log("play chandelier sound");
+     chandelierSound.play();
+     chandelier.classList.remove('glow');
+     chandelier.classList.add('swingChandelier')
+ })
+
+ setTimeout(function () {
+     console.log("staircase glow");
+     stairCase.classList.add('glow');
+ }, 10000)
+
+
+
 
 
  scene6Continue.addEventListener('click', leaveSixthScene);

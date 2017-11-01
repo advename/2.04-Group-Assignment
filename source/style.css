@@ -418,18 +418,15 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-4-object-6 {
-    background-image: url(scene4/bloodyhand.png);
+    background-image: url(scene4/bloodyhandprints.png);
     background-repeat: no-repeat;
-    background-position: -100px 0px;
-    opacity: 0.8;
+    opacity: 0.9;
     height: 2595px;
     width: 1542px;
     position: absolute;
-    z-index: 9;
-    top: -941px;
-    left: -76px;
-    transform: scale(0.04) rotate(20deg);
-    ;
+    top: 26px;
+    left: 412px;
+    transform: scale(0.8);
 }
 
 .sc-4-moveCurtain {
@@ -515,11 +512,24 @@ a fixed width and height, relative to body-container */
     width: 415px;
     height: 428px;
     position: absolute;
+    z-index: 16;
     top: 130px;
     left: 635px;
     transform: scale(.28);
 }
-
+.sc-5-object-4 {
+    background-image: url(scene5/womanshadow.png);
+    background-repeat: no-repeat;
+    opacity: .9;
+    width: 578px;
+    height: 766px;
+    position: absolute;
+    z-index: 22;
+    top: -36px;
+    left: 543px;
+    transform: scale(.045);
+    display: none;
+}
 
 
 
@@ -571,6 +581,26 @@ a fixed width and height, relative to body-container */
     top: -510px;
     left: -129px;
     transform: scale(.48);
+}
+.swingChandelier {
+    animation: swingChandelier 3.5s  ease-in-out infinite;
+}
+
+@keyframes swingChandelier {
+    0% {
+        transform: rotate(5deg) scale(.48);
+        transform-origin: 50% 50%;
+    }
+    50% {
+        transform: rotate(-10deg) scale(0.48);
+        transform-origin: 50% 50%;
+        opacity: .9;
+        -webkit-filter: drop-shadow(2px 5px 10px white);
+    }
+    100% {
+        transform: rotate(5deg) scale(0.48);
+        transform-origin: 50% 50%;
+    }
 }
 
 
