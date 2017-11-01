@@ -3,7 +3,7 @@
  //Initialize let and give values
  let intro = document.querySelector("#intro");
  let introClickToStart = document.querySelector(".intro-click-to-start");
- let introActive = false;
+ let introActive = true;
 
 
  //Audio of INTRO SCENE (but also used in other scenes such as Rain thunder and neon flickering)
@@ -21,7 +21,7 @@
  // Change Intro Bates Sign randomly with flickering sound
  let introBatesGlow = document.querySelector(".intro-bates-sign")
 
- setTimeout(introRandomBates, random(2000, 4000));
+ introRandomBates()
 
  function introRandomBates() {
 
@@ -47,7 +47,7 @@
  // Change Intro Vacancies sign randomly with flickering sound
  let introVacancyGlow = document.querySelector(".intro-vacany-sign")
 
- setTimeout(introRandomVacancy, random(2000, 4000));
+ introRandomVacancy();
 
  function introRandomVacancy() {
      // check if introActive is true, if so, continue, otherwhise, stop function
@@ -109,7 +109,6 @@
 
      //Activate functions from scene 1
      sc1NeonSignRandomGlow();
-     sc1WindowRandomGlow();
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -151,7 +150,9 @@
      }
  }
 
-
+ goodAfterNoonA.onended = function () {
+     sc1WindowRandomGlow();
+ };
  // Window with random flash/glowing
  function sc1WindowRandomGlow() {
 
@@ -172,7 +173,6 @@
          console.log("sc1-deactivated");
      }
  }
-
 
  //Adding click event listener to Window Area
  sc1Window.addEventListener('click', leaveFirstScene);
@@ -260,16 +260,29 @@
  let sc3Active = false;
  let scene3Continue = document.querySelector(".sc-3-continue");
  let parlourA = document.querySelector(".parlourA");
+ let sc3ZoomContainer = document.querySelector("#sc-3-zoomContainer");
+
  parlourA.volume = .6;
 
  console.log("Third Scene")
 
 
- scene3Continue.addEventListener('click', leaveThirdScene);
+ scene3Continue.addEventListener('click', preLeaveThirdScene);
+
+ parlourA.onended = function () {
+     scene3Continue.classList.add("glow");
+ };
+
+ function preLeaveThirdScene() {
+     scene3Continue.classList.remove("glow");
+     scene3Continue.classList.add("sc-3-object-2-Animate");
+     setTimeout('sc3ZoomContainer.classList.add("sc-3-zoomIn")', 2200);
+     setTimeout(leaveThirdScene, 5500);
+
+ }
 
  function leaveThirdScene() {
      console.log("leave third scene");
-
 
      //preLoad Images for next Scene for clean transition
      preLoadImage("scene5/scene5-background.jpg");
@@ -312,30 +325,13 @@
 
  let sc4bathRings = document.querySelector(".sc-4-object-4")
  let sc4bathCurtain = document.querySelector(".sc-4-object-5")
-
-
- sc4bathCurtain.addEventListener("click", function () {
-     console.log("move curtain");
-     sc4bathCurtain.classList.add("sc-4-moveCurtain")
-     sc4bathRings.classList.add("sc-4-moveCurtain")
- })
-
-
- let skra = document.querySelector(".sc-4-object-2");
- let skraA = document.querySelector(".skraA");
- skra.addEventListener('click', function () {
-     console.log("skraaaaaaa")
-
-     skraA.play();
- });
-
-
  let plant = document.querySelector(".sc-4-object-1");
  let vaseBreakSound = document.querySelector(".vaseBreaking");
 
 
  sc4bathCurtain.addEventListener("click", function () {
 
+     scene4Continue.classList.remove("glow");
      console.log("move curtain");
      sc4bathCurtain.classList.add("sc-4-moveCurtain");
      sc4bathRings.classList.add("sc-4-moveCurtain");
@@ -345,17 +341,15 @@
          plant.classList.add("plantFalling");
          vaseBreakSound.play();
      }, 1600);
+     setTimeout(leaveFourthScene, 2300);
  })
 
+ bathroomA.onended = function () {
+     scene4Continue.classList.add("glow");
+ };
 
 
 
-
-
-
-
-
- scene4Continue.addEventListener('click', leaveFourthScene);
 
  function leaveFourthScene() {
      console.log("leave fourth scene");
