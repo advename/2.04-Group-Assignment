@@ -521,6 +521,31 @@
  console.log("Seventh Scene")
 
 
+ let chairBedroom = document.querySelector('.sc-7-object-5');
+ let pictureBedroom = document.querySelector('.sc-7-object-1');
+ let windowBedroom = document.querySelector('.sc-7-object-6');
+
+ setTimeout(function () {
+     chairBedroom.classList.add('chairMoves');
+     console.log("chair moving")
+ }, 2000);
+
+ setTimeout(function () {
+     console.log("frame falls");
+     pictureBedroom.classList.add('pictureFalls');
+ }, 4000)
+
+ setTimeout(function () {
+     console.log("window glow");
+     windowBedroom.classList.add('glow');
+
+ }, 6000)
+
+
+
+
+
+
  scene7Continue.addEventListener('click', leaveSeventhScene);
 
  function leaveSeventhScene() {

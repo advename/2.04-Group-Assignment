@@ -611,10 +611,6 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-7-continue {
-    height: 100px;
-    width: 100px;
-    background: white;
-    opacity: .5;
     cursor: pointer;
 }
 
@@ -666,6 +662,47 @@ a fixed width and height, relative to body-container */
     top: 150px;
     left: 60px;
     transform: scale(.47);
+        z-index: 20;
+}
+.sc-7-object-6 {
+       background-image: url(scene7/windowbedroom1.png);
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    height: 638px;
+    width: 566px;
+    position: absolute;
+    top: -73px;
+    left: 93px;
+    z-index: 1;
+    transform: scale(.7);
+}
+
+.chairMoves {
+    animation: chairMoving 3s ease-in-out;
+    animation-iteration-count: 6;
+}
+
+@keyframes chairMoving {
+    25% {
+        transform: translateX(-3px) scale(.47);
+    }
+    50% {
+        transform: translateX(3px) scale(.47);
+    }
+    75%{
+        transform: translateX(-3px) scale(.47);
+    }
+
+}
+
+.pictureFalls {
+    animation: pictureFalls 1s forwards;
+}
+
+@keyframes pictureFalls {
+    to {
+        transform: rotate(30deg) translateY(20px) scale(.47);
+    }
 }
 
 
