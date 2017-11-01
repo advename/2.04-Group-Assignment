@@ -254,11 +254,15 @@
      fadeOutAudio(nobodyEverA);
      fadeOutAudio(dinnerA);
 
+      setTimeout(function () {
+         scene3Continue.classList.add("glow");
+     }, 12600);
+
+
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
      sc2Active = false;
      sc3Active = true;
-
  }
 
 
@@ -279,9 +283,6 @@
 
  scene3Continue.addEventListener('click', preLeaveThirdScene);
 
- parlourA.onended = function () {
-     scene3Continue.classList.add("glow");
- };
 
  function preLeaveThirdScene() {
      scene3Continue.classList.remove("glow");
@@ -518,33 +519,26 @@
  let motherBedroomA = document.querySelector(".motherBedroomA");
  motherBedroomA.volume = .4;
 
- console.log("Seventh Scene")
-
 
  let chairBedroom = document.querySelector('.sc-7-object-5');
  let pictureBedroom = document.querySelector('.sc-7-object-1');
  let windowBedroom = document.querySelector('.sc-7-object-6');
 
- setTimeout(function () {
-     chairBedroom.classList.add('chairMoves');
-     console.log("chair moving")
- }, 2000);
 
- setTimeout(function () {
+ motherBedroomA.onended = function () {
+     chairBedroom.classList.add('chairMoves');
+     console.log("chair moving");
+
+     setTimeout(function () {
      console.log("frame falls");
      pictureBedroom.classList.add('pictureFalls');
- }, 4000)
-
- setTimeout(function () {
+ }, 4000);
+     setTimeout(function () {
      console.log("window glow");
      windowBedroom.classList.add('glow');
 
- }, 6000)
-
-
-
-
-
+ }, 6000);
+ };
 
  scene7Continue.addEventListener('click', leaveSeventhScene);
 
