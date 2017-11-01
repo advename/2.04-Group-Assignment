@@ -215,8 +215,17 @@
  let sc2Active = false;
  let scene2Continue = document.querySelector(".sc-2-continue");
  let nobodyEverA = document.querySelector(".nobodyEverA")
+ let dinnerA = document.querySelector(".dinnerA")
 
  console.log("Second Scene")
+
+
+ nobodyEverA.onended = function () {
+     dinnerA.play();
+ };
+ dinnerA.onended = function () {
+     scene2Continue.classList.add("glow");
+ };
 
 
  scene2Continue.addEventListener('click', leaveSecondScene);
@@ -243,6 +252,7 @@
      setTimeout('fadeIn(scene3)', 1200);
      setTimeout('parlourA.play()', 1800);
      fadeOutAudio(nobodyEverA);
+     fadeOutAudio(dinnerA);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -290,7 +300,7 @@
      preLoadImage("scene5/scene5-object1.png");
      preLoadImage("scene5/scene5-object2.png");
      preLoadImage("scene5/scene5-object3.png");
-     preLoadImage("scene5/scene5-object4.png");
+     preLoadImage("scene5/womanshadow1.png");
 
      //fade out audio and start next scenes audio
      rainThunderAudio.volume = .10;
@@ -366,9 +376,10 @@
      //fade out scene and fade in next one
      fadeOut(scene4);
      setTimeout('fadeIn(scene5)', 1200);
+     setTimeout('fadeIn(humanShadow)', 2800);
      setTimeout('windowSeenA.play()', 1800);
+     setTimeout('motherTalkingA.play()', 2800);
      fadeOutAudio(bathroomA);
-     fadeOutAudio(skraA);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -386,16 +397,18 @@
  let scene5 = document.querySelector("#sc-5");
  let sc5Active = false;
  let scene5Continue = document.querySelector(".sc-5-continue");
+ let humanShadow = document.querySelector(".sc-5-object-4");
  let windowSeenA = document.querySelector(".windowSeenA");
+ let motherTalkingA = document.querySelector(".motherTalkingA");
+
  windowSeenA.volume = .4;
 
  console.log("Fifth Scene")
 
- let humanShadow = document.querySelector(".sc-5-object-4");
+ motherTalkingA.onended = function () {
+     humanShadow.classList.add('glow2');
+ };
 
- setTimeout(function () {
-     humanShadow.style.display = "block"
- }, 4000)
 
 
  scene5Continue.addEventListener('click', leaveFifthScene);
@@ -419,6 +432,7 @@
      setTimeout('fadeIn(scene6)', 1200);
      setTimeout('stairsA.play()', 1800);
      fadeOutAudio(windowSeenA);
+     fadeOutAudio(motherTalkingA);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -443,10 +457,16 @@
  let chandelierSound = document.querySelector(".chandelierA");
  let stairCase = document.querySelector(".sc-6-object-2");
 
- setTimeout(function () {
+
+
+ stairsA.onended = function () {
      console.log("chandelier glow");
      chandelier.classList.add('glow');
- }, 2000);
+     setTimeout(function () {
+         console.log("staircase glow");
+         stairCase.classList.add('glow');
+     }, 10000)
+ };
 
  chandelier.addEventListener("click", function () {
      console.log("play chandelier sound");
@@ -454,12 +474,6 @@
      chandelier.classList.remove('glow');
      chandelier.classList.add('swingChandelier')
  })
-
- setTimeout(function () {
-     console.log("staircase glow");
-     stairCase.classList.add('glow');
- }, 10000)
-
 
 
 
@@ -477,6 +491,7 @@
 
      //fade out audio and start next scenes audio
      rainThunderAudio.volume = .10;
+     fadeOutAudio(chandelierSound);
 
      //fade out scene and fade in next one
      fadeOut(scene6);
@@ -532,28 +547,35 @@
  // ================================================================================
  let scene8 = document.querySelector("#sc-8");
  let sc8Active = false;
- let scene8Continue = document.querySelector(".sc-8-continue");
  let sc8Car = document.querySelector(".sc-8-object-2");
  let sc8Swamp = document.querySelector(".sc-8-object-1");
  let sc8Lights = document.querySelector(".sc-8-object-3");
- let rain = document.querySelector(".rain");
+ let rainClass2 = document.querySelector(".rainClass");
 
 
  sc8Car.addEventListener('click', sc8SinkCar);
 
  function sc8SinkCar() {
-     sc8Swamp.classList.add("sc-8-object-1Scale");
-     sc8Car.classList.add("sc-8-object-SinkCar");
-     sc8Lights.classList.add("hide");
-     setTimeout('fadeInSlow(creditsHeader)', 600);
-     swampSoundA.play();
-     setTimeout('finalSoundA.play()', 1000);
-     setTimeout(leaveEightScene, 3000);
+     fadeOut(rainClass2);
+     setTimeout(function () {
+         sc8Swamp.classList.add("sc-8-object-1Scale");
+         sc8Car.classList.add("sc-8-object-SinkCar");
+         swampSoundA.play();
+         sc8Lights.classList.add("hide");
+     }, 600);
+     setTimeout('fadeInSlow(creditsHeader)', 1600);
+     setTimeout('finalSoundA.play()', 3500);
+     setTimeout(leaveEightScene, 6000);
+
+
+ }
+ sc8Car.addEventListener("animationend", preLeaveEightScene);
+
+ function preLeaveEightScene() {
 
  }
 
 
- scene8Continue.addEventListener('click', leaveEightScene);
 
  function leaveEightScene() {
      console.log("leave eigth scene");
@@ -727,10 +749,11 @@
  // based on the status of rainActive
  let rainSwitch = document.querySelector(".switch input")
  let rainActive = true;
+ let rainClass = document.querySelectorAll(".rain");
  rainSwitch.addEventListener('click', rainStatus);
 
  function rainStatus() {
-     let rainClass = document.querySelectorAll(".rain");
+
 
      if (rainActive === true) {
          var n = rainClass.length;

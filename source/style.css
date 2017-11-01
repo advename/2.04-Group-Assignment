@@ -478,12 +478,6 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-5-continue {
-    height: 100px;
-    width: 100px;
-    background: white;
-    opacity: .5;
-    position: absolute;
-    z-index: 20;
     cursor: pointer;
 }
 
@@ -518,7 +512,7 @@ a fixed width and height, relative to body-container */
     transform: scale(.28);
 }
 .sc-5-object-4 {
-    background-image: url(scene5/womanshadow.png);
+    background-image: url(scene5/womanshadow1.png);
     background-repeat: no-repeat;
     opacity: .9;
     width: 578px;
@@ -528,7 +522,6 @@ a fixed width and height, relative to body-container */
     top: -36px;
     left: 543px;
     transform: scale(.045);
-    display: none;
 }
 
 
@@ -715,7 +708,7 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-8-object-1Scale {
-    animation: sc-8-ScaleSwamp 9s;
+    animation: sc-8-ScaleSwamp 9s forwards;
 }
 
 @keyframes sc-8-ScaleSwamp {
@@ -736,7 +729,7 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-8-object-SinkCar {
-    animation: sc-8-SinkCar 9s;
+    animation: sc-8-SinkCar 9s forwards;
 }
 
 @keyframes sc-8-SinkCar {
@@ -861,7 +854,6 @@ a fixed width and height, relative to body-container */
     animation: fall .63s linear infinite;
     pointer-events: none;
 }
-
 @keyframes fall {
     to {
         margin-top: 900px;
@@ -963,6 +955,16 @@ input:checked + .slider:before {
     to {
         -webkit-filter: drop-shadow(5px 5px 15px yellow);
         filter: drop-shadow(5px 5px 15px yellow);
+    }
+}
+
+.glow2 {
+    animation: makeGlow2 .5s alternate infinite;
+}
+
+@keyframes makeGlow2 {
+    to {
+        filter: drop-shadow(50px 10px 205px yellow);
     }
 }
 
