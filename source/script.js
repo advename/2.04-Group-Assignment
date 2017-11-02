@@ -3,7 +3,7 @@
  //Initialize let and give values
  let intro = document.querySelector("#intro");
  let introClickToStart = document.querySelector(".intro-click-to-start");
- let introActive = true;
+ let introActive = false;
 
 
  //Audio of INTRO SCENE (but also used in other scenes such as Rain thunder and neon flickering)
@@ -317,203 +317,425 @@
      }
  }
 
-     function leaveThirdScene() {
-         console.log("leave third scene");
+ function leaveThirdScene() {
+     console.log("leave third scene");
 
-         //preLoad Images for next Scene for clean transition
-         preLoadImage("scene5/scene5-background.jpg");
-         preLoadImage("scene5/scene5-foreground.png");
-         preLoadImage("scene5/scene5-object1.png");
-         preLoadImage("scene5/scene5-object2.png");
-         preLoadImage("scene5/scene5-object3.png");
-         preLoadImage("scene5/womanshadow1.png");
+     //preLoad Images for next Scene for clean transition
+     preLoadImage("scene5/scene5-background.jpg");
+     preLoadImage("scene5/scene5-foreground.png");
+     preLoadImage("scene5/scene5-object1.png");
+     preLoadImage("scene5/scene5-object2.png");
+     preLoadImage("scene5/scene5-object3.png");
+     preLoadImage("scene5/womanshadow1.png");
 
-         //fade out audio and start next scenes audio
-         rainThunderAudio.volume = .10;
+     //fade out audio and start next scenes audio
+     rainThunderAudio.volume = .10;
 
-         //fade out scene and fade in next one
-         fadeOut(scene3);
-         setTimeout('fadeIn(scene4)', 1200);
-         setTimeout('bathroomA.play()', 1800);
-         fadeOutAudio(parlourA);
+     //fade out scene and fade in next one
+     fadeOut(scene3);
+     setTimeout('fadeIn(scene4)', 1200);
+     setTimeout('bathroomA.play()', 1800);
+     fadeOutAudio(parlourA);
 
-         //stop all running functions from the scene for better performance
-         // and unlock the functions for next scene
-         sc3Active = false;
-         sc4Active = false;
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
+     sc3Active = false;
+     sc4Active = false;
 
-         setTimeout(function () {
-             scene4Continue.classList.add("glow");
-         }, 4500)
-
-     }
-
-
-
-
-     // ===========================  FOURTH SCENE ======================================
-     // ================================================================================
-     let scene4 = document.querySelector("#sc-4");
-     let sc4Active = false;
-     let scene4Continue = document.querySelector(".sc-4-continue");
-     let bathroomA = document.querySelector(".bathroomA");
-     bathroomA.volume = .4;
-
-     console.log("Fourth Scene")
-
-
-
-     let sc4bathRings = document.querySelector(".sc-4-object-4")
-     let sc4bathCurtain = document.querySelector(".sc-4-object-5")
-     let plant = document.querySelector(".sc-4-object-1");
-     let vaseBreakSound = document.querySelector(".vaseBreaking");
-
-
-     sc4bathCurtain.addEventListener("click", function () {
-
-         scene4Continue.classList.remove("glow");
-         console.log("move curtain");
-         sc4bathCurtain.classList.add("sc-4-moveCurtain");
-         sc4bathRings.classList.add("sc-4-moveCurtain");
-
-         setTimeout(function () {
-             console.log("plant falling");
-             plant.classList.add("plantFalling");
-             vaseBreakSound.play();
-         }, 1600);
-         setTimeout(leaveFourthScene, 2300);
-     })
-
-     /* bathroomA.onended = function () {
+     setTimeout(function () {
          scene4Continue.classList.add("glow");
-     }; */
+     }, 4500)
+
+ }
 
 
 
 
-     function leaveFourthScene() {
-         console.log("leave fourth scene");
+ // ===========================  FOURTH SCENE ======================================
+ // ================================================================================
+ let scene4 = document.querySelector("#sc-4");
+ let sc4Active = false;
+ let scene4Continue = document.querySelector(".sc-4-continue");
+ let bathroomA = document.querySelector(".bathroomA");
+ bathroomA.volume = .4;
 
-         //preLoad Images for next Scene for clean transition
-         preLoadImage("scene6/scene6-background.jpg");
-         preLoadImage("scene6/scene6-object1.png");
-         preLoadImage("scene6/scene6-object2.png");
-         preLoadImage("scene6/scene6-object3.png");
-
-         //fade out audio and start next scenes audio
-         rainThunderAudio.volume = .30;
-
-         //fade out scene and fade in next one
-         fadeOut(scene4);
-         setTimeout('fadeIn(scene5)', 1200);
-         setTimeout('fadeIn(humanShadow)', 2800);
-         setTimeout('windowSeenA.play()', 1800);
-         setTimeout('motherTalkingA.play()', 2800);
-         fadeOutAudio(bathroomA);
-
-         //stop all running functions from the scene for better performance
-         // and unlock the functions for next scene
-         sc4Active = false;
-         sc5Active = true;
-
-
-     }
+ console.log("Fourth Scene")
 
 
 
-
-     // ===========================  FIFTH SCENE ======================================
-     // ================================================================================
-     let scene5 = document.querySelector("#sc-5");
-     let sc5Active = false;
-     let scene5Continue = document.querySelector(".sc-5-continue");
-     let humanShadow = document.querySelector(".sc-5-object-4");
-     let windowSeenA = document.querySelector(".windowSeenA");
-     let motherTalkingA = document.querySelector(".motherTalkingA");
-
-     windowSeenA.volume = .4;
-
-     console.log("Fifth Scene")
-
-     motherTalkingA.onended = function () {
-         scene5Continue.classList.add('glow2');
-     };
+ let sc4bathRings = document.querySelector(".sc-4-object-4")
+ let sc4bathCurtain = document.querySelector(".sc-4-object-5")
+ let plant = document.querySelector(".sc-4-object-1");
+ let vaseBreakSound = document.querySelector(".vaseBreaking");
 
 
+ sc4bathCurtain.addEventListener("click", function () {
 
-     scene5Continue.addEventListener('click', leaveFifthScene);
+     scene4Continue.classList.remove("glow");
+     console.log("move curtain");
+     sc4bathCurtain.classList.add("sc-4-moveCurtain");
+     sc4bathRings.classList.add("sc-4-moveCurtain");
 
-     function leaveFifthScene() {
-         console.log("leave fifth scene");
+     setTimeout(function () {
+         console.log("plant falling");
+         plant.classList.add("plantFalling");
+         vaseBreakSound.play();
+     }, 1600);
+     setTimeout(leaveFourthScene, 2300);
+ })
 
-         //preLoad Images for next Scene for clean transition
-         preLoadImage("scene7/scene7-background.jpg");
-         preLoadImage("scene7/scene7-object1.png");
-         preLoadImage("scene7/scene7-object2.png");
-         preLoadImage("scene7/scene7-object3.png");
-         preLoadImage("scene7/scene7-object4.png");
-         preLoadImage("scene7/scene7-object5.png");
-
-         //fade out audio and start next scenes audio
-         rainThunderAudio.volume = .10;
-
-         //fade out scene and fade in next one
-         fadeOut(scene5);
-         setTimeout('fadeIn(scene6)', 1200);
-         setTimeout('stairsA.play()', 1800);
-         fadeOutAudio(windowSeenA);
-         fadeOutAudio(motherTalkingA);
-
-         //stop all running functions from the scene for better performance
-         // and unlock the functions for next scene
-         sc5Active = false;
-         sc6Active = true;
-
-         chandelierMoving();
-
-     }
+ /* bathroomA.onended = function () {
+     scene4Continue.classList.add("glow");
+ }; */
 
 
-     // ===========================  SIXTH SCENE ======================================
-     // ================================================================================
-     let scene6 = document.querySelector("#sc-6");
-     let sc6Active = false;
-     let scene6Continue = document.querySelector(".sc-6-continue");
-     let stairsA = document.querySelector(".stairsA");
-     stairsA.volume = .4;
-
-     console.log("Sixth Scene")
 
 
-     let chandelier = document.querySelector(".sc-6-object-3");
-     let chandelierSound = document.querySelector(".chandelierA");
-     let stairCase = document.querySelector(".sc-6-object-2");
+ function leaveFourthScene() {
+     console.log("leave fourth scene");
+
+     //preLoad Images for next Scene for clean transition
+     preLoadImage("scene6/scene6-background.jpg");
+     preLoadImage("scene6/scene6-object1.png");
+     preLoadImage("scene6/scene6-object2.png");
+     preLoadImage("scene6/scene6-object3.png");
+
+     //fade out audio and start next scenes audio
+     rainThunderAudio.volume = .30;
+
+     //fade out scene and fade in next one
+     fadeOut(scene4);
+     setTimeout('fadeIn(scene5)', 1200);
+     setTimeout('fadeIn(humanShadow)', 2800);
+     setTimeout('windowSeenA.play()', 1800);
+     setTimeout('motherTalkingA.play()', 2800);
+     fadeOutAudio(bathroomA);
+
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
+     sc4Active = false;
+     sc5Active = true;
 
 
-     /*
-     stairsA.onended = function () {
-         console.log("chandelier glow");
-         chandelier.classList.add('glow');
+ }
+
+
+
+
+ // ===========================  FIFTH SCENE ======================================
+ // ================================================================================
+ let scene5 = document.querySelector("#sc-5");
+ let sc5Active = false;
+ let scene5Continue = document.querySelector(".sc-5-continue");
+ let humanShadow = document.querySelector(".sc-5-object-4");
+ let windowSeenA = document.querySelector(".windowSeenA");
+ let motherTalkingA = document.querySelector(".motherTalkingA");
+
+ windowSeenA.volume = .4;
+
+ console.log("Fifth Scene")
+
+ motherTalkingA.onended = function () {
+     scene5Continue.classList.add('glow2');
+ };
+
+
+
+ scene5Continue.addEventListener('click', leaveFifthScene);
+
+ function leaveFifthScene() {
+     console.log("leave fifth scene");
+
+     //preLoad Images for next Scene for clean transition
+     preLoadImage("scene7/scene7-background.jpg");
+     preLoadImage("scene7/scene7-object1.png");
+     preLoadImage("scene7/scene7-object2.png");
+     preLoadImage("scene7/scene7-object3.png");
+     preLoadImage("scene7/scene7-object4.png");
+     preLoadImage("scene7/scene7-object5.png");
+
+     //fade out audio and start next scenes audio
+     rainThunderAudio.volume = .10;
+
+     //fade out scene and fade in next one
+     fadeOut(scene5);
+     setTimeout('fadeIn(scene6)', 1200);
+     setTimeout('stairsA.play()', 1800);
+     fadeOutAudio(windowSeenA);
+     fadeOutAudio(motherTalkingA);
+
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
+     sc5Active = false;
+     sc6Active = true;
+
+     chandelierMoving();
+
+ }
+
+
+ // ===========================  SIXTH SCENE ======================================
+ // ================================================================================
+ let scene6 = document.querySelector("#sc-6");
+ let sc6Active = false;
+ let scene6Continue = document.querySelector(".sc-6-continue");
+ let stairsA = document.querySelector(".stairsA");
+ stairsA.volume = .4;
+
+ console.log("Sixth Scene")
+
+
+ let chandelier = document.querySelector(".sc-6-object-3");
+ let chandelierSound = document.querySelector(".chandelierA");
+ let stairCase = document.querySelector(".sc-6-object-2");
+
+
+ /*
+ stairsA.onended = function () {
+     console.log("chandelier glow");
+     chandelier.classList.add('glow');
+     setTimeout(function () {
+         console.log("staircase glow");
+         stairCase.classList.add('glow');
+     }, 10000)
+ }; */
+
+
+
+
+ function chandelierMoving() {
+     console.log("play chandelier sound");
+
+     chandelierSound.play();
+     chandelierSound.volume = .1;
+     chandelier.classList.add('swingChandelier');
+     setTimeout(function () {
+         console.log("staircase glow");
+         stairCase.classList.add('glow');
+     }, 13000)
+ }
+
+
+
+
+
+
+
+
+
+ scene6Continue.addEventListener('click', leaveSixthScene);
+
+ function leaveSixthScene() {
+     console.log("leave sixth scene");
+
+     //preLoad Images for next Scene for clean transition
+     preLoadImage("scene8/scene8-background.jpg");
+     preLoadImage("scene8/scene8-object1.png");
+     preLoadImage("scene8/scene8-object2.png");
+     preLoadImage("scene8/scene8-object3.png");
+
+     //fade out audio and start next scenes audio
+     rainThunderAudio.volume = .10;
+     fadeOutAudio(chandelierSound);
+
+     //fade out scene and fade in next one
+     fadeOut(scene6);
+     fadeOutAudio(stairsA);
+     setTimeout('fadeIn(scene7)', 1200);
+     setTimeout('motherBedroomA.play()', 1800);
+
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
+     sc6Active = false;
+     sc7Active = true;
+
+     runSeventhScene();
+
+
+ }
+
+
+
+ // ===========================  SEVENTH SCENE ======================================
+ // ================================================================================
+ let scene7 = document.querySelector("#sc-7");
+ let sc7Active = false;
+ let scene7Continue = document.querySelector(".sc-7-continue");
+
+ let motherBedroomA = document.querySelector(".motherBedroomA");
+ motherBedroomA.volume = .4;
+
+
+ let chairBedroom = document.querySelector('.sc-7-object-5');
+ let pictureBedroom = document.querySelector('.sc-7-object-1');
+ let windowBedroom = document.querySelector('.sc-7-object-6');
+
+ function runSeventhScene() {
+     setTimeout(function () {
+         chairBedroom.classList.add('chairMoves');
+         console.log("chair moving")
+     }, 2000);
+
+     setTimeout(function () {
+         console.log("frame falls");
+         pictureBedroom.classList.add('pictureFalls');
+     }, 4000);
+     setTimeout(function () {
+         console.log("window glow");
+         windowBedroom.classList.add('glow');
+
+     }, 6000);
+ };
+
+ scene7Continue.addEventListener('click', leaveSeventhScene);
+
+ function leaveSeventhScene() {
+     console.log("leave seventh scene");
+
+     //fade out audio and start next scenes audio
+     rainThunderAudio.volume = .10;
+
+     //fade out scene and fade in next one
+     fadeOut(scene7);
+     fadeOutAudio(motherBedroomA);
+     setTimeout('fadeIn(scene8)', 1200);
+
+
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
+     sc7Active = false;
+     sc8Active = true;
+
+     sc8SinkCar();
+
+ }
+
+
+ // ===========================  EIGTH SCENE ======================================
+ // ================================================================================
+ let scene8 = document.querySelector("#sc-8");
+ let sc8Active = false;
+ let sc8Car = document.querySelector(".sc-8-object-2");
+ let sc8Swamp = document.querySelector(".sc-8-object-1");
+ let sc8Lights = document.querySelector(".sc-8-object-3");
+ let rainClass2 = document.querySelector(".rainClass");
+
+
+ // sc8Car.addEventListener('click', sc8SinkCar);
+
+ function sc8SinkCar() {
+     fadeOut(rainClass2);
+     setTimeout('swampSoundA.play()', 1400);
+     setTimeout(function () {
+         sc8Swamp.classList.add("sc-8-object-1Scale");
+         sc8Car.classList.add("sc-8-object-SinkCar");
+         sc8Lights.classList.add("hide");
+     }, 2000);
+     setTimeout('fadeInSlow(creditsHeader)', 2300);
+     setTimeout('finalSoundA.play()', 3500);
+     setTimeout(leaveEightScene, 6000);
+
+
+ }
+ sc8Car.addEventListener("animationend", preLeaveEightScene);
+
+ function preLeaveEightScene() {
+
+ }
+
+
+
+ function leaveEightScene() {
+     console.log("leave eigth scene");
+
+     //fade out audio and start next scenes audio
+     rainThunderAudio.volume = .10;
+
+     //fade out scene and fade in next one
+     fadeOut(scene8);
+     setTimeout('fadeIn(credits)', 3200);
+
+     //stop all running functions from the scene for better performance
+     // and unlock the functions for next scene
+     sc8Active = false;
+     //credits = true;
+
+ }
+
+ // ===========================  CREDITS ===========================================
+ // ================================================================================
+ let credits = document.querySelector("#credits");
+ let creditsHeader = document.querySelector(".credits-header");
+ let creditsNames = document.querySelector(".credits-names");
+ let creditsActive = false;
+
+
+ let finalSoundA = document.querySelector(".finalSoundA");
+ finalSoundA.volume = .4;
+ let swampSoundA = document.querySelector(".swampSoundA");
+ swampSoundA.volume = .4;
+
+
+ creditsHeaderRandomFlickering();
+
+ // Neon sign random flicker with sound
+ function creditsHeaderRandomFlickering() {
+
+     // check if sceneActive is true, if so, continue, otherwhise, stop function by not calling it again
+     if (creditsActive === true) {
+         //adding class for animation
+         creditsHeader.classList.add("credits-header-flickering");
+         neonFlickerAudio.play();
+         //wait some time and then remove the class for normal state (animation disabled)
          setTimeout(function () {
-             console.log("staircase glow");
-             stairCase.classList.add('glow');
-         }, 10000)
-     }; */
+             creditsHeader.classList.remove("credits-header-flickering");
+         }, 120);
+         console.log("credits-still-active")
+         //wait random to change run function again for animation
+         let interval = random(121, 4000)
+         setTimeout(creditsHeaderRandomFlickering, interval);
+     } else {
+         console.log("credits-deactivated");
+     }
+ }
 
+ creditsNamesRandomFlickering();
 
+ // Neon sign random flicker with sound
+ function creditsNamesRandomFlickering() {
 
-
-     function chandelierMoving() {
-         console.log("play chandelier sound");
-
-         chandelierSound.play();
-         chandelierSound.volume = .1;
-         chandelier.classList.add('swingChandelier');
+     // check if sceneActive is true, if so, continue, otherwhise, stop function by not calling it again
+     if (creditsActive === true) {
+         //adding class for animation
+         creditsNames.classList.add("credits-names-flickering");
+         neonFlickerAudio.play();
+         //wait some time and then remove the class for normal state (animation disabled)
          setTimeout(function () {
-             console.log("staircase glow");
-             stairCase.classList.add('glow');
-         }, 13000)
+             creditsNames.classList.remove("credits-names-flickering");
+         }, 120);
+         console.log("credits-still-active")
+         //wait random to change run function again for animation
+         let interval = random(121, 4000)
+         setTimeout(creditsNamesRandomFlickering, interval);
+     } else {
+         console.log("credits-deactivated");
      }
+ }
+
+ console.log("Credits Scene")
+
+
+ // Reload page on click
+ let refreshButton = document.querySelector(".reload-button")
+
+ creditsNames.addEventListener('animationend', function () {
+     fadeIn(refreshButton);
+
+ });
+
+ refreshButton.addEventListener('click', function () {
+     window.location.reload()
+ });
 
 
 
@@ -523,373 +745,215 @@
 
 
 
-     scene6Continue.addEventListener('click', leaveSixthScene);
+ // ================================================================================
+ // ================================================================================
+ // ===========================  OTHER STUFF =======================================
+ // ================================================================================
 
-     function leaveSixthScene() {
-         console.log("leave sixth scene");
-
-         //preLoad Images for next Scene for clean transition
-         preLoadImage("scene8/scene8-background.jpg");
-         preLoadImage("scene8/scene8-object1.png");
-         preLoadImage("scene8/scene8-object2.png");
-         preLoadImage("scene8/scene8-object3.png");
-
-         //fade out audio and start next scenes audio
-         rainThunderAudio.volume = .10;
-         fadeOutAudio(chandelierSound);
-
-         //fade out scene and fade in next one
-         fadeOut(scene6);
-         fadeOutAudio(stairsA);
-         setTimeout('fadeIn(scene7)', 1200);
-         setTimeout('motherBedroomA.play()', 1800);
-
-         //stop all running functions from the scene for better performance
-         // and unlock the functions for next scene
-         sc6Active = false;
-         sc7Active = true;
-
-         runSeventhScene();
-
-
-     }
-
-
-
-     // ===========================  SEVENTH SCENE ======================================
-     // ================================================================================
-     let scene7 = document.querySelector("#sc-7");
-     let sc7Active = false;
-     let scene7Continue = document.querySelector(".sc-7-continue");
-
-     let motherBedroomA = document.querySelector(".motherBedroomA");
-     motherBedroomA.volume = .4;
-
-
-     let chairBedroom = document.querySelector('.sc-7-object-5');
-     let pictureBedroom = document.querySelector('.sc-7-object-1');
-     let windowBedroom = document.querySelector('.sc-7-object-6');
-
-     function runSeventhScene() {
-         setTimeout(function () {
-             chairBedroom.classList.add('chairMoves');
-             console.log("chair moving")
-         }, 2000);
-
-         setTimeout(function () {
-             console.log("frame falls");
-             pictureBedroom.classList.add('pictureFalls');
-         }, 4000);
-         setTimeout(function () {
-             console.log("window glow");
-             windowBedroom.classList.add('glow');
-
-         }, 6000);
-     };
-
-     scene7Continue.addEventListener('click', leaveSeventhScene);
-
-     function leaveSeventhScene() {
-         console.log("leave seventh scene");
-
-         //fade out audio and start next scenes audio
-         rainThunderAudio.volume = .10;
-
-         //fade out scene and fade in next one
-         fadeOut(scene7);
-         fadeOutAudio(motherBedroomA);
-         setTimeout('fadeIn(scene8)', 1200);
-
-
-         //stop all running functions from the scene for better performance
-         // and unlock the functions for next scene
-         sc7Active = false;
-         sc8Active = true;
-
-         sc8SinkCar();
-
-     }
-
-
-     // ===========================  EIGTH SCENE ======================================
-     // ================================================================================
-     let scene8 = document.querySelector("#sc-8");
-     let sc8Active = false;
-     let sc8Car = document.querySelector(".sc-8-object-2");
-     let sc8Swamp = document.querySelector(".sc-8-object-1");
-     let sc8Lights = document.querySelector(".sc-8-object-3");
-     let rainClass2 = document.querySelector(".rainClass");
-
-
-     // sc8Car.addEventListener('click', sc8SinkCar);
-
-     function sc8SinkCar() {
-         fadeOut(rainClass2);
-         setTimeout('swampSoundA.play()', 1400);
-         setTimeout(function () {
-             sc8Swamp.classList.add("sc-8-object-1Scale");
-             sc8Car.classList.add("sc-8-object-SinkCar");
-             sc8Lights.classList.add("hide");
-         }, 2000);
-         setTimeout('fadeInSlow(creditsHeader)', 2300);
-         setTimeout('finalSoundA.play()', 3500);
-         setTimeout(leaveEightScene, 6000);
-
-
-     }
-     sc8Car.addEventListener("animationend", preLeaveEightScene);
-
-     function preLeaveEightScene() {
-
-     }
-
-
-
-     function leaveEightScene() {
-         console.log("leave eigth scene");
-
-         //fade out audio and start next scenes audio
-         rainThunderAudio.volume = .10;
-
-         //fade out scene and fade in next one
-         fadeOut(scene8);
-         setTimeout('fadeIn(credits)', 3200);
-
-         //stop all running functions from the scene for better performance
-         // and unlock the functions for next scene
-         sc8Active = false;
-         //credits = true;
-
-     }
-
-     // ===========================  CREDITS ===========================================
-     // ================================================================================
-     let credits = document.querySelector("#credits");
-     let creditsHeader = document.querySelector(".credits-header");
-     let creditsNames = document.querySelector(".credits-names");
-     let creditsActive = false;
-
-
-     let finalSoundA = document.querySelector(".finalSoundA");
-     finalSoundA.volume = .4;
-     let swampSoundA = document.querySelector(".swampSoundA");
-     swampSoundA.volume = .4;
-
-
-     creditsHeaderRandomFlickering();
-
-     // Neon sign random flicker with sound
-     function creditsHeaderRandomFlickering() {
-
-         // check if sceneActive is true, if so, continue, otherwhise, stop function by not calling it again
-         if (creditsActive === true) {
-             //adding class for animation
-             creditsHeader.classList.add("credits-header-flickering");
-             neonFlickerAudio.play();
-             //wait some time and then remove the class for normal state (animation disabled)
-             setTimeout(function () {
-                 creditsHeader.classList.remove("credits-header-flickering");
-             }, 120);
-             console.log("credits-still-active")
-             //wait random to change run function again for animation
-             let interval = random(121, 4000)
-             setTimeout(creditsHeaderRandomFlickering, interval);
-         } else {
-             console.log("credits-deactivated");
+ // Function to fade away elements
+ function fadeOut(element) {
+     var op = 1; // initial opacity
+     var timer = setInterval(function () {
+         // if completely faded away, stop timer and add .hide class to element
+         if (op <= 0.1) {
+             clearInterval(timer);
+             element.classList.add("hide");
          }
-     }
+         // else, continue fading away
+         element.style.opacity = op;
+         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+         op -= op * 0.1;
+     }, 50);
+ }
 
-     creditsNamesRandomFlickering();
+ function fadeIn(element) {
 
-     // Neon sign random flicker with sound
-     function creditsNamesRandomFlickering() {
-
-         // check if sceneActive is true, if so, continue, otherwhise, stop function by not calling it again
-         if (creditsActive === true) {
-             //adding class for animation
-             creditsNames.classList.add("credits-names-flickering");
-             neonFlickerAudio.play();
-             //wait some time and then remove the class for normal state (animation disabled)
-             setTimeout(function () {
-                 creditsNames.classList.remove("credits-names-flickering");
-             }, 120);
-             console.log("credits-still-active")
-             //wait random to change run function again for animation
-             let interval = random(121, 4000)
-             setTimeout(creditsNamesRandomFlickering, interval);
-         } else {
-             console.log("credits-deactivated");
+     var op = 0.1; // initial opacity
+     var timer = setInterval(function () {
+         // if completely faded away, stop timer and add .hide class to element
+         if (op >= 0.9) {
+             clearInterval(timer);
+             element.classList.remove("hide");
+             console.log("delay finished")
          }
-     }
+         // else, continue fading in
+         element.style.opacity = op;
+         element.style.filter = 'alpha(opacity=' + op + ")";
+         op = op + 0.1;
+         element.classList.remove("hide");
+     }, 50);
+ }
 
+ function fadeInSlow(element) {
 
+     var op = 0.1; // initial opacity
+     var timer = setInterval(function () {
+         // if completely faded away, stop timer and add .hide class to element
+         if (op >= 0.9) {
+             clearInterval(timer);
+             element.classList.remove("hide");
+             console.log("delay finished")
+         }
+         // else, continue fading in
+         element.style.opacity = op;
+         element.style.filter = 'alpha(opacity=' + op + ")";
+         op = op + 0.1;
+         element.classList.remove("hide");
+     }, 150);
+ }
 
-
-     console.log("Credits Scene")
-
-
-
-
-
-
-
-
-
-     // ================================================================================
-     // ================================================================================
-     // ===========================  OTHER STUFF =======================================
-     // ================================================================================
-
-     // Function to fade away elements
-     function fadeOut(element) {
-         var op = 1; // initial opacity
-         var timer = setInterval(function () {
-             // if completely faded away, stop timer and add .hide class to element
-             if (op <= 0.1) {
-                 clearInterval(timer);
-                 element.classList.add("hide");
-             }
+ // Function to fade away audio
+ function fadeOutAudio(audio) {
+     var vol = .2;
+     var timer = setInterval(function () {
+         // if completely faded away, stop timer and add .hide class to element
+         if (audio.volume <= vol) {
+             clearInterval(timer);
+             audio.pause();
+         } else {
              // else, continue fading away
-             element.style.opacity = op;
-             element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-             op -= op * 0.1;
-         }, 50);
+             audio.volume = audio.volume - 0.1;
+         }
+     }, 50);
+ }
+
+
+
+
+ // JavaScript to actually make the rain (in combination with jQuery)
+ // Create 858 times the CCS class .drop and add the to the <div class="rain"><div>
+ // and then make them fall from top to bottom with a keyframes (in CSS)
+ var nbDrop = 858;
+
+ function randRange(minNum, maxNum) {
+     return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+ }
+
+ function createRain() {
+
+     for (i = 1; i < nbDrop; i++) {
+         var dropLeft = randRange(0, 1300);
+         var dropTop = randRange(-1000, 725);
+
+         $('.rain').append('<div class="drop dropNbr' + i + '"></div>');
+         $('.dropNbr' + i).css('left', dropLeft);
+         $('.dropNbr' + i).css('top', dropTop);
      }
 
-     function fadeIn(element) {
+ }
+ createRain();
 
-         var op = 0.1; // initial opacity
-         var timer = setInterval(function () {
-             // if completely faded away, stop timer and add .hide class to element
-             if (op >= 0.9) {
-                 clearInterval(timer);
-                 element.classList.remove("hide");
-                 console.log("delay finished")
-             }
-             // else, continue fading in
-             element.style.opacity = op;
-             element.style.filter = 'alpha(opacity=' + op + ")";
-             op = op + 0.1;
-             element.classList.remove("hide");
-         }, 50);
+
+
+ // Function to use random number with a given Min and Max.
+ function random(minNum, maxNum) {
+     return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+ }
+
+ function delay(functionToDelay, time) {
+     console.log("delay started")
+     setTimeout(functionToDelay, time);
+ }
+
+
+
+ // Play Raind and Thunder Audio in loop without a gap between each loop
+ rainThunderAudio.addEventListener('timeupdate', function () {
+     var buffer = .44
+     if (this.currentTime > this.duration - buffer) {
+         this.currentTime = 0
+         this.play()
      }
+ }, false);
 
-     function fadeInSlow(element) {
-
-         var op = 0.1; // initial opacity
-         var timer = setInterval(function () {
-             // if completely faded away, stop timer and add .hide class to element
-             if (op >= 0.9) {
-                 clearInterval(timer);
-                 element.classList.remove("hide");
-                 console.log("delay finished")
-             }
-             // else, continue fading in
-             element.style.opacity = op;
-             element.style.filter = 'alpha(opacity=' + op + ")";
-             op = op + 0.1;
-             element.classList.remove("hide");
-         }, 150);
-     }
-
-     // Function to fade away audio
-     function fadeOutAudio(audio) {
-         var vol = .2;
-         var timer = setInterval(function () {
-             // if completely faded away, stop timer and add .hide class to element
-             if (audio.volume <= vol) {
-                 clearInterval(timer);
-                 audio.pause();
-             } else {
-                 // else, continue fading away
-                 audio.volume = audio.volume - 0.1;
-             }
-         }, 50);
-     }
+ // Function to preload images - using this maybe increases the user experience by not loading images when needed, but before
+ function preLoadImage(imageFileName) {
+     var my_image = new Image();
+     my_image.src = imageFileName;
+     console.log("Preload Image" + imageFileName);
+ }
 
 
-     // Switch button in the beginning to hide or display the rain
-     // based on the status of rainActive
-     let rainSwitch = document.querySelector(".switch input")
-     let rainActive = true;
-     let rainClass = document.querySelectorAll(".rain");
-     rainSwitch.addEventListener('click', rainStatus);
+ let fullscreenButton = document.querySelector(".fullscreenSwitch");
+ let fullScreenActive = false;
+ fullscreenButton.addEventListener('click', goFullScreen)
 
-     function rainStatus() {
-
-
-         if (rainActive === true) {
-             var n = rainClass.length;
-             for (var i = 0; i < n; ++i) {
-                 rainClass[i].classList.add("hide");
-             }
-             rainActive = false;
-         } else {
-             var n = rainClass.length;
-             for (var i = 0; i < n; ++i) {
-                 rainClass[i].classList.remove("hide");
-             }
-             rainActive = true;
+ function goFullScreen() {
+     if (!document.fullscreenElement && // alternative standard method
+         !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) { // current working methods
+         if (document.documentElement.requestFullscreen) {
+             document.documentElement.requestFullscreen();
+         } else if (document.documentElement.msRequestFullscreen) {
+             document.documentElement.msRequestFullscreen();
+         } else if (document.documentElement.mozRequestFullScreen) {
+             document.documentElement.mozRequestFullScreen();
+         } else if (document.documentElement.webkitRequestFullscreen) {
+             document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+         }
+     } else {
+         if (document.exitFullscreen) {
+             document.exitFullscreen();
+         } else if (document.msExitFullscreen) {
+             document.msExitFullscreen();
+         } else if (document.mozCancelFullScreen) {
+             document.mozCancelFullScreen();
+         } else if (document.webkitExitFullscreen) {
+             document.webkitExitFullscreen();
          }
      }
 
-     // JavaScript to actually make the rain (in combination with jQuery)
-     // Create 858 times the CCS class .drop and add the to the <div class="rain"><div>
-     // and then make them fall from top to bottom with a keyframes (in CSS)
-     var nbDrop = 858;
+ }
 
-     function randRange(minNum, maxNum) {
-         return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
-     }
 
-     function createRain() {
+ // Switch button in the beginning to hide or display the rain
+ // based on the status of rainActive
+ let rainSwitch = document.querySelector(".rainSwitch input")
+ let rainActive = true;
+ let rainClass = document.querySelectorAll(".rain");
 
-         for (i = 1; i < nbDrop; i++) {
-             var dropLeft = randRange(0, 1300);
-             var dropTop = randRange(-1000, 725);
+ rainSwitch.addEventListener('click', rainStatus);
 
-             $('.rain').append('<div class="drop dropNbr' + i + '"></div>');
-             $('.dropNbr' + i).css('left', dropLeft);
-             $('.dropNbr' + i).css('top', dropTop);
+ function rainStatus() {
+     if (rainActive == true){
+         var n = rainClass.length;
+         for (var i = 0; i < n; ++i) {
+             rainClass[i].classList.add("hide");
          }
+         rainActive = false;
+         console.log("RAIN DE-ACTIVATED")
 
      }
-     createRain();
 
-
-
-     // Function to use random number with a given Min and Max.
-     function random(minNum, maxNum) {
-         return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
-     }
-
-     function delay(functionToDelay, time) {
-         console.log("delay started")
-         setTimeout(functionToDelay, time);
-     }
-
-
-
-     // Play Raind and Thunder Audio in loop without a gap between each loop
-     rainThunderAudio.addEventListener('timeupdate', function () {
-         var buffer = .44
-         if (this.currentTime > this.duration - buffer) {
-             this.currentTime = 0
-             this.play()
+     else {
+        var n = rainClass.length;
+         for (var i = 0; i < n; ++i) {
+             rainClass[i].classList.remove("hide");
          }
-     }, false);
+         rainActive = true;
+         console.log("RAIN DE-ACTIVATED")
 
-     // Function to preload images - using this maybe increases the user experience by not loading images when needed, but before
-     function preLoadImage(imageFileName) {
-         var my_image = new Image();
-         my_image.src = imageFileName;
-         console.log("Preload Image" + imageFileName);
+
+     }
+     console.log(rainActive);
+ }
+
+/*if (rainActive === true) {
+
+         return;
+     } else if (rainActive === false){
+         var n = rainClass.length;
+         for (var i = 0; i < n; ++i) {
+             rainClass[i].classList.remove("hide");
+         }
+         rainActive = true;
+         console.log("RAIN ACTIVATED")
+         return;
      }
 
 
 
 
-     /* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
+ /* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
 
 
 
@@ -899,4 +963,4 @@
 
 
 
-     /* OLIIIIIIVVIIIIIIAAAAAAAAAAA END*/
+ /* OLIIIIIIVVIIIIIIAAAAAAAAAAA END*/

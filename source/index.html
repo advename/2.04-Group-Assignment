@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Bates Motel Trailer</title>
@@ -25,13 +26,31 @@
                 <!-- Div to continue to next scene -->
                 <div class="intro-click-to-start">
                 </div>
+
+                <!-- Intro Description -->
+                <div class="description">
+                    <h1>Welcome to Bates Motel</h1>
+                    <p>Enjoy an interactive teaser of the movie "Psycho". Your host will be the true one and only Alfred Hitchcock and guide you around - without exposing too much but still with enough clues.
+                    </p>
+                </div>
+
+                <div class="fullscreen">
+                    <p>Toggle between Fullscreen Mode</p>
+                    <label class="switch fullscreenSwitch">
+                        <input type="checkbox" >
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
                 <!-- Rain Switch toggle on off -->
                 <div class="rainNone">
                     <p>Turn rain OFF for better performance</p>
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
+                    <div class="rainSwitch">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                 </div>
 
                 <!-- Makes it raiiin -->
@@ -228,10 +247,13 @@
             </div>
 
             <div class="credits-header hide"></div>
+
+
             <!-- ################ Credits ################## -->
             <div id="credits" class="hide">
 
                 <div class="credits-names credits-names-rollDown"></div>
+                <input type="button" class="reload-button hide" value="Try again &#8617;">
 
                 <audio class="finalSoundA">
                     <source src="credits/finalSound.mp3" type="audio/mpeg">
@@ -249,6 +271,8 @@
 </body>
 
 <script>
+
+
 </script>
 <script src="script.js"></script>
 
