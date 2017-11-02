@@ -500,17 +500,6 @@ a fixed width and height, relative to body-container */
     cursor: pointer;
 }
 
-.sc-4-object-6 {
-    background-image: url(scene4/bloodyhandprints.png);
-    background-repeat: no-repeat;
-    opacity: 0.9;
-    height: 2595px;
-    width: 1542px;
-    position: absolute;
-    top: 26px;
-    left: 412px;
-    transform: scale(0.8);
-}
 
 .sc-4-moveCurtain {
     animation: sc-4-slideCurtain 1.8s linear forwards;
