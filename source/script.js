@@ -199,7 +199,12 @@
      //fade out scene
      fadeOut(scene1);
      setTimeout('fadeIn(scene2)', 1200);
+     setTimeout('keysA.play();', 2400);
      setTimeout('dinnerA.play();', 3200);
+     setTimeout(function () {
+         scene2Continue.classList.add("glow");
+     }, 12000);
+
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -214,14 +219,13 @@
  let scene2 = document.querySelector("#sc-2");
  let sc2Active = false;
  let scene2Continue = document.querySelector(".sc-2-continue");
- let nobodyEverA = document.querySelector(".nobodyEverA")
  let dinnerA = document.querySelector(".dinnerA")
+ let keysA = document.querySelector(".keysA")
+
 
  console.log("Second Scene")
 
- dinnerA.onended = function () {
-     scene2Continue.classList.add("glow");
- };
+
 
 
  scene2Continue.addEventListener('click', leaveSecondScene);
@@ -247,7 +251,6 @@
      fadeOut(scene2);
      setTimeout('fadeIn(scene3)', 1200);
      setTimeout('parlourA.play()', 1800);
-     fadeOutAudio(nobodyEverA);
      fadeOutAudio(dinnerA);
 
      setTimeout(function () {
@@ -475,7 +478,7 @@
  let sc6Active = false;
  let scene6Continue = document.querySelector(".sc-6-continue");
  let stairsA = document.querySelector(".stairsA");
- stairsA.volume = .4;
+ stairsA.volume = 1;
 
  console.log("Sixth Scene")
 
@@ -559,6 +562,12 @@
 
  let motherBedroomA = document.querySelector(".motherBedroomA");
  motherBedroomA.volume = .4;
+ let murdererCreptA = document.querySelector(".murdererCreptA");
+
+
+ motherBedroomA.onended = function () {
+     murdererCreptA.play();
+ };
 
 
  let chairBedroom = document.querySelector('.sc-7-object-5');
@@ -620,6 +629,7 @@
 
  function sc8SinkCar() {
      fadeOut(rainClass2);
+     setTimeout('finalSoundA.play()', 500);
      setTimeout('swampSoundA.play()', 1400);
      setTimeout(function () {
          sc8Swamp.classList.add("sc-8-object-1Scale");
@@ -627,7 +637,6 @@
          sc8Lights.classList.add("hide");
      }, 2000);
      setTimeout('fadeInSlow(creditsHeader)', 2300);
-     setTimeout('finalSoundA.play()', 3500);
      setTimeout(leaveEightScene, 6000);
 
 
@@ -910,7 +919,7 @@
  rainSwitch.addEventListener('click', rainStatus);
 
  function rainStatus() {
-     if (rainActive == true){
+     if (rainActive == true) {
          var n = rainClass.length;
          for (var i = 0; i < n; ++i) {
              rainClass[i].classList.add("hide");
@@ -918,10 +927,8 @@
          rainActive = false;
          console.log("RAIN DE-ACTIVATED")
 
-     }
-
-     else {
-        var n = rainClass.length;
+     } else {
+         var n = rainClass.length;
          for (var i = 0; i < n; ++i) {
              rainClass[i].classList.remove("hide");
          }
@@ -933,23 +940,23 @@
      console.log(rainActive);
  }
 
-/*if (rainActive === true) {
+ /*if (rainActive === true) {
 
-         return;
-     } else if (rainActive === false){
-         var n = rainClass.length;
-         for (var i = 0; i < n; ++i) {
-             rainClass[i].classList.remove("hide");
-         }
-         rainActive = true;
-         console.log("RAIN ACTIVATED")
-         return;
-     }
-
-
+          return;
+      } else if (rainActive === false){
+          var n = rainClass.length;
+          for (var i = 0; i < n; ++i) {
+              rainClass[i].classList.remove("hide");
+          }
+          rainActive = true;
+          console.log("RAIN ACTIVATED")
+          return;
+      }
 
 
- /* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
+
+
+  /* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
 
 
 
