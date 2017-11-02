@@ -256,6 +256,7 @@
 
      setTimeout(function () {
          pictureFrame.classList.add("glow");
+         pictureFrame.style.cursor = "pointer";
          sc3Clickable = true;
      }, 12600);
 
@@ -287,6 +288,7 @@
  pictureFrame.addEventListener('click', function () {
      if (sc3Clickable === true) {
          pictureFrame.classList.remove("glow");
+         pictureFrame.style.cursor = "auto";
          pictureFrame.classList.add("sc-3-object-2-Animate");
          pictureFrame.style.pointerEvents = "none";
      }
@@ -294,12 +296,9 @@
 
  parlourA.onended = function () {
      sc3Clickable2 = true;
+     scene3Continue.style.cursor = "pointer";
      scene3Continue.classList.add('glow');
  }
-
-
-
-
 
 
 
@@ -734,6 +733,7 @@
  });
 
  refreshButton.addEventListener('click', function () {
+     console.log("Refresh Window");
      window.location.reload()
  });
 

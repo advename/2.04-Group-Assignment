@@ -345,10 +345,6 @@ a fixed width and height, relative to body-container */
     }
 }
 
-.sc-3-continue {
-    cursor: pointer;
-}
-
 .sc-3-object-1 {
     background-image: url(scene3/scene3-object1.png);
     width: 1002px;
@@ -904,7 +900,8 @@ a fixed width and height, relative to body-container */
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 30;
+    z-index: 12;
+    pointer-events: none;
 }
 
 .credits-header-flickering {
@@ -961,6 +958,7 @@ a fixed width and height, relative to body-container */
     font-size: 27px;
     padding: 5px;
     cursor: pointer;
+    z-index:3000;
 }
 
 .reload-button:hover {
