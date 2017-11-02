@@ -199,7 +199,7 @@
      //fade out scene
      fadeOut(scene1);
      setTimeout('fadeIn(scene2)', 1200);
-     setTimeout('nobodyEverA.play()', 3200);
+     setTimeout('dinnerA.play();', 3200);
 
      //stop all running functions from the scene for better performance
      // and unlock the functions for next scene
@@ -219,10 +219,6 @@
 
  console.log("Second Scene")
 
-
- nobodyEverA.onended = function () {
-     dinnerA.play();
- };
  dinnerA.onended = function () {
      scene2Continue.classList.add("glow");
  };
