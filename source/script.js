@@ -562,7 +562,7 @@
  let scene7Continue = document.querySelector(".sc-7-continue");
 
  let motherBedroomA = document.querySelector(".motherBedroomA");
- motherBedroomA.volume = .5;
+ motherBedroomA.volume = .8;
  let murdererCreptA = document.querySelector(".murdererCreptA");
  murdererCreptA.volume = .7;
 
