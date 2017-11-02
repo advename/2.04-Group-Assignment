@@ -217,7 +217,7 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-2-object-1 {
-    animation: curtainUp 1.5s ease-in forwards;
+    animation: curtainUp 1.5s 8s ease-in forwards;
 
 
 }
@@ -266,7 +266,7 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-2-object-3 {
-    animation: jingleKeys .5s linear 10;
+    animation: jingleKeys .5s 4s linear 10;
 
 }
 
@@ -389,7 +389,7 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-3-object-3 {
-    animation: lazerEyes 1s ease-in forwards
+    animation: lazerEyes 1s 3s ease-in forwards
 }
 
 @keyframes lazerEyes {
@@ -411,7 +411,7 @@ a fixed width and height, relative to body-container */
 }
 
 .sc-3-object-4 {
-    animation: flameOn 2s ease-out forwards
+    animation: flameOn 2s 3.2s ease-out forwards
 }
 
 @keyframes flameOn {

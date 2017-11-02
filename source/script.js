@@ -199,11 +199,11 @@
      //fade out scene
      fadeOut(scene1);
      setTimeout('fadeIn(scene2)', 1200);
-     setTimeout('keysA.play();', 2400);
-     setTimeout('dinnerA.play();', 3200);
+     setTimeout('keysA.play();', 4400);
+     setTimeout('dinnerA.play();', 1000);
      setTimeout(function () {
          scene2Continue.classList.add("glow");
-     }, 12000);
+     }, 14500);
 
 
      //stop all running functions from the scene for better performance
@@ -224,7 +224,7 @@
 
 
  console.log("Second Scene")
-
+ keysA.volume = 0.7;
 
 
 
@@ -257,7 +257,7 @@
          pictureFrame.classList.add("glow");
          pictureFrame.style.cursor = "pointer";
          sc3Clickable = true;
-     }, 12600);
+     }, 12000);
 
 
      //stop all running functions from the scene for better performance
@@ -378,6 +378,7 @@
          console.log("plant falling");
          plant.classList.add("plantFalling");
          vaseBreakSound.play();
+         vaseBreakSound.volume = 0.1;
      }, 1600);
      setTimeout(leaveFourthScene, 2300);
  })
@@ -510,7 +511,7 @@
      setTimeout(function () {
          console.log("staircase glow");
          stairCase.classList.add('glow');
-     }, 13000)
+     }, 8500);
  }
 
 
@@ -561,9 +562,9 @@
  let scene7Continue = document.querySelector(".sc-7-continue");
 
  let motherBedroomA = document.querySelector(".motherBedroomA");
- motherBedroomA.volume = .4;
+ motherBedroomA.volume = .5;
  let murdererCreptA = document.querySelector(".murdererCreptA");
-
+ murdererCreptA.volume = .7;
 
  motherBedroomA.onended = function () {
      murdererCreptA.play();
@@ -578,17 +579,17 @@
      setTimeout(function () {
          chairBedroom.classList.add('chairMoves');
          console.log("chair moving")
-     }, 2000);
+     }, 5500);
 
      setTimeout(function () {
          console.log("frame falls");
          pictureBedroom.classList.add('pictureFalls');
-     }, 4000);
+     }, 7500);
      setTimeout(function () {
          console.log("window glow");
          windowBedroom.classList.add('glow');
 
-     }, 6000);
+     }, 11000);
  };
 
  scene7Continue.addEventListener('click', leaveSeventhScene);
@@ -738,7 +739,22 @@
  });
 
  refreshButton.addEventListener('click', function () {
-     console.log("Refresh Window");
+     var sounds = document.getElementsByTagName('audio');
+     for (i = 0; i < sounds.length; i++) {
+         sounds[i].pause()
+     };
+
+     neonFlickerAudio.volume = .5;
+     neonAudio.play();
+     neonAudio.volume = .5;
+     rainThunderAudio.play();
+     rainThunderAudio.volume = .5;
+     fadeOutAudio(finalSoundA);
+
+     introRandomBates();
+     introRandomVacancy();
+     fadeOut(credits);
+     fadeIn(intro);
      window.location.reload()
  });
 
