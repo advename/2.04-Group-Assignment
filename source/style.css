@@ -1004,7 +1004,7 @@ a fixed width and height, relative to body-container */
 /* Container of rain on/off switcher */
 
 .description {
-    height: 320px;
+    height: 370px;
     width: 350px;
     cursor: pointer;
     font-weight: bold;
@@ -1172,10 +1172,3 @@ input:checked + .slider:before {
         filter: drop-shadow(10px 10px 25px yellow);
     }
 }
-
-
-
-
-/* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
-
-/* OLIIIIIIVVIIIIIIAAAAAAAAAAA END*/

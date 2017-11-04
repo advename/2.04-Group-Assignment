@@ -20,7 +20,6 @@
 
  // Change Intro Bates Sign randomly with flickering sound
  let introBatesGlow = document.querySelector(".intro-bates-sign")
-
  introRandomBates()
 
  function introRandomBates() {
@@ -755,7 +754,7 @@
      introRandomVacancy();
      fadeOut(credits);
      fadeIn(intro);
-     window.location.reload()
+     console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
  });
 
 
@@ -955,31 +954,3 @@
      }
      console.log(rainActive);
  }
-
- /*if (rainActive === true) {
-
-          return;
-      } else if (rainActive === false){
-          var n = rainClass.length;
-          for (var i = 0; i < n; ++i) {
-              rainClass[i].classList.remove("hide");
-          }
-          rainActive = true;
-          console.log("RAIN ACTIVATED")
-          return;
-      }
-
-
-
-
-  /* OLIIIIIIVVIIIIIIAAAAAAAAAAA START*/
-
-
-
-
-
-
-
-
-
- /* OLIIIIIIVVIIIIIIAAAAAAAAAAA END*/
