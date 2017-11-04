@@ -1004,7 +1004,7 @@ a fixed width and height, relative to body-container */
 /* Container of rain on/off switcher */
 
 .description {
-    height: 370px;
+    height: 440px;
     width: 350px;
     cursor: pointer;
     font-weight: bold;
